@@ -1,6 +1,7 @@
-import 'package:diagnosis_accuracy/my_controllers.dart';
+import 'package:diagnosis_accuracy/controllers/my_controllers.dart';
 import 'package:diagnosis_accuracy/views/home_view.dart';
 import 'package:diagnosis_accuracy/views/new_acc.dart';
+import 'package:diagnosis_accuracy/widgets/custom_password_field_widget.dart';
 import 'package:diagnosis_accuracy/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -33,7 +34,7 @@ class LoginPage extends StatelessWidget {
                     width: 10,
                   ),
                   TextWidget(
-                    text: 'SIGN UP',
+                    text: 'SIGN IN',
                     isHeading: true,
                   )
                 ],
@@ -43,17 +44,20 @@ class LoginPage extends StatelessWidget {
                 child: Center(
                   child: Column(
                     children: [
-                      TextFormFieldWidget(
+                      GeneralTextFormFieldWidget(
                           validation: control.validateEmail,
                           text: TextWidget(text: 'Email Address'),
-                          control2: control.eControl,
+                          controller: control.eControl,
                           hint: 'youremailaddress@any.com'),
-                      TextFormFieldWidget(
-                        validation: control.validatePassword,
-                        text: TextWidget(text: 'Password'),
-                        control2: control.p1Control,
-                        hint: '************',
-                        isPassword: true,
+                      Obx(
+                        () => CustomPasswordFormField(
+                          controller: control.pControl,
+                          hintText: "***********",
+                          userFunction: () => control.toggleVisibility(),
+                          isVisible: control.isVisible.value,
+                          text: TextWidget(text: "Password"),
+                          validate: control.validatePassword,
+                        ),
                       ),
                       const SizedBox(height: 10),
                       Row(

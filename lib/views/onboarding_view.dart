@@ -1,6 +1,7 @@
 import 'package:diagnosis_accuracy/views/onboarding_items.dart';
 import 'package:diagnosis_accuracy/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:get/get.dart';
 
 import 'landing_view.dart';
@@ -65,15 +66,13 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                   padding: const EdgeInsets.fromLTRB(60, 10, 60, 10),
                   child: Column(
                     children: [
-                      Image.asset(
-                        pages[index].imageUrl,
-                        width: 150,
+                      Lottie.asset(
+                        pages[index].lottieUrl!,
+                        width: 200,
                         height: 400,
                       ),
                       const SizedBox(height: 30),
-                      Text(
-                        pages[index].title,
-                      ),
+                      pages[index].title,
                       const SizedBox(height: 10),
                       Text(
                         pages[index].text,

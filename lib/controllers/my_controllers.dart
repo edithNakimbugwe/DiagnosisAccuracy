@@ -3,6 +3,9 @@ import 'package:get/get.dart';
 
 class MyControllers extends GetxController {
   final eControl = TextEditingController();
+  final e1Control = TextEditingController();
+  final pControl = TextEditingController();
+
   final p1Control = TextEditingController();
   final p2Control = TextEditingController();
   final n1Control = TextEditingController();
@@ -15,7 +18,6 @@ class MyControllers extends GetxController {
   final GlobalKey<FormState> formKey2 = GlobalKey<FormState>();
 
   var isVisible = false.obs;
-  var isTextVisible = false.obs;
 
   String? validateEmail(String? email) {
     if (email == '' || email == null) {
@@ -68,9 +70,5 @@ class MyControllers extends GetxController {
 
   void toggleVisibility() {
     isVisible.value = !isVisible.value;
-  }
-
-  void toggleTextVisibility() {
-    isTextVisible.value = !isTextVisible.value;
   }
 }

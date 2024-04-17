@@ -45,10 +45,10 @@ class ResultsPage extends StatelessWidget {
                             SizedBox(
                               width: 100,
                               height: 30,
-                              child: TextFormFieldWidget(
+                              child: GeneralTextFormFieldWidget(
                                   validation: resultsControl.validateAge,
                                   text: TextWidget(text: ''),
-                                  control2: resultsControl.t1Control,
+                                  controller: resultsControl.t1Control,
                                   hint: '20'),
                             ),
                             TextWidget(text: 'Years')
@@ -99,10 +99,10 @@ class ResultsPage extends StatelessWidget {
                             SizedBox(
                               width: 100,
                               height: 30,
-                              child: TextFormFieldWidget(
+                              child: GeneralTextFormFieldWidget(
                                   validation: resultsControl.validateTBilirubin,
                                   text: TextWidget(text: ''),
-                                  control2: resultsControl.t3Control,
+                                  controller: resultsControl.t3Control,
                                   hint: '1.2'),
                             ),
                             TextWidget(text: 'mg/dL')
@@ -120,10 +120,10 @@ class ResultsPage extends StatelessWidget {
                             SizedBox(
                               width: 100,
                               height: 30,
-                              child: TextFormFieldWidget(
+                              child: GeneralTextFormFieldWidget(
                                   validation: resultsControl.validateDBilrubin,
                                   text: TextWidget(text: ''),
-                                  control2: resultsControl.t4Control,
+                                  controller: resultsControl.t4Control,
                                   hint: '0.3'),
                             ),
                             TextWidget(text: 'mg/dL')
@@ -141,10 +141,10 @@ class ResultsPage extends StatelessWidget {
                             SizedBox(
                               width: 100,
                               height: 30,
-                              child: TextFormFieldWidget(
+                              child: GeneralTextFormFieldWidget(
                                   validation: resultsControl.validateAlkalinep,
                                   text: TextWidget(text: ''),
-                                  control2: resultsControl.t5Control,
+                                  controller: resultsControl.t5Control,
                                   hint: '44-147'),
                             ),
                             TextWidget(text: 'IU/L')
@@ -162,10 +162,10 @@ class ResultsPage extends StatelessWidget {
                             SizedBox(
                               width: 100,
                               height: 30,
-                              child: TextFormFieldWidget(
+                              child: GeneralTextFormFieldWidget(
                                   validation: resultsControl.validateAlaine,
                                   text: TextWidget(text: ''),
-                                  control2: resultsControl.t6Control,
+                                  controller: resultsControl.t6Control,
                                   hint: '4-36'),
                             ),
                             TextWidget(text: 'U/L')
@@ -183,10 +183,10 @@ class ResultsPage extends StatelessWidget {
                             SizedBox(
                               width: 100,
                               height: 30,
-                              child: TextFormFieldWidget(
+                              child: GeneralTextFormFieldWidget(
                                   validation: resultsControl.validateAspartate,
                                   text: TextWidget(text: ''),
-                                  control2: resultsControl.t7Control,
+                                  controller: resultsControl.t7Control,
                                   hint: '8-33'),
                             ),
                             TextWidget(text: 'U/L')
@@ -204,10 +204,10 @@ class ResultsPage extends StatelessWidget {
                             SizedBox(
                               width: 100,
                               height: 30,
-                              child: TextFormFieldWidget(
+                              child: GeneralTextFormFieldWidget(
                                   validation: resultsControl.validateTProteins,
                                   text: TextWidget(text: ''),
-                                  control2: resultsControl.t8Control,
+                                  controller: resultsControl.t8Control,
                                   hint: ''),
                             ),
                             TextWidget(text: 'U/L')
@@ -225,10 +225,10 @@ class ResultsPage extends StatelessWidget {
                             SizedBox(
                               width: 100,
                               height: 30,
-                              child: TextFormFieldWidget(
+                              child: GeneralTextFormFieldWidget(
                                   validation: resultsControl.validateAlbumin,
                                   text: TextWidget(text: ''),
-                                  control2: resultsControl.t9Control,
+                                  controller: resultsControl.t9Control,
                                   hint: '3.4-5.4'),
                             ),
                             TextWidget(text: 'g/dL')
@@ -246,10 +246,10 @@ class ResultsPage extends StatelessWidget {
                             SizedBox(
                               width: 100,
                               height: 30,
-                              child: TextFormFieldWidget(
+                              child: GeneralTextFormFieldWidget(
                                   validation: resultsControl.validateAGRatio,
                                   text: TextWidget(text: ''),
-                                  control2: resultsControl.t10Control,
+                                  controller: resultsControl.t10Control,
                                   hint: '00'),
                             ),
                             TextWidget(text: 'units')

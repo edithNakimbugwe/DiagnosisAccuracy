@@ -1,4 +1,5 @@
-import 'package:diagnosis_accuracy/my_controllers.dart';
+import 'package:diagnosis_accuracy/controllers/my_controllers.dart';
+import 'package:diagnosis_accuracy/widgets/custom_password_field_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -38,49 +39,55 @@ class NewAccount extends StatelessWidget {
                   child: Center(
                     child: Column(
                       children: [
-                        TextFormFieldWidget(
+                        GeneralTextFormFieldWidget(
                             validation: control.validateName,
                             text: TextWidget(text: 'First Name'),
-                            control2: control.n1Control,
+                            controller: control.n1Control,
                             hint: 'eg. EDITH'),
-                        TextFormFieldWidget(
+                        GeneralTextFormFieldWidget(
                             validation: control.validateName,
                             text: TextWidget(text: 'Last Name'),
-                            control2: control.n2Control,
+                            controller: control.n2Control,
                             hint: 'eg. AWINO'),
-                        TextFormFieldWidget(
+                        GeneralTextFormFieldWidget(
                             validation: control.validateEmail,
                             text: TextWidget(text: 'Email Address'),
-                            control2: control.eControl,
+                            controller: control.e1Control,
                             hint: 'youremailaddress@any.com'),
-                        TextFormFieldWidget(
-                          validation: control.validatePassword,
-                          text: TextWidget(text: 'Password'),
-                          control2: control.p1Control,
-                          hint: '************',
-                          isPassword: true,
+                        Obx(
+                          () => CustomPasswordFormField(
+                            controller: control.p1Control,
+                            hintText: "*********",
+                            userFunction: () => control.toggleVisibility(),
+                            isVisible: control.isVisible.value,
+                            text: TextWidget(text: "Password"),
+                            validate: control.validatePassword,
+                          ),
                         ),
-                        TextFormFieldWidget(
-                          validation: control.validatePassword,
-                          text: TextWidget(text: 'Confirm Password'),
-                          control2: control.p2Control,
-                          hint: '************',
-                          isPassword: true,
+                        Obx(
+                          () => CustomPasswordFormField(
+                            controller: control.p2Control,
+                            hintText: "*********",
+                            userFunction: () => control.toggleVisibility(),
+                            isVisible: control.isVisible.value,
+                            text: TextWidget(text: "Comfirm Password"),
+                            validate: control.validatePassword,
+                          ),
                         ),
-                        TextFormFieldWidget(
+                        GeneralTextFormFieldWidget(
                             validation: control.validateCountry,
                             text: TextWidget(text: 'Country'),
-                            control2: control.cControl,
+                            controller: control.cControl,
                             hint: 'eg. Uganda'),
-                        TextFormFieldWidget(
+                        GeneralTextFormFieldWidget(
                             validation: control.validateOccupation,
                             text: TextWidget(text: 'Occupation'),
-                            control2: control.oControl,
+                            controller: control.oControl,
                             hint: 'eg. Physician'),
-                        TextFormFieldWidget(
+                        GeneralTextFormFieldWidget(
                             validation: control.validateSpecialty,
                             text: TextWidget(text: 'Specialty'),
-                            control2: control.sControl,
+                            controller: control.sControl,
                             hint: ' eg. Hepatologist'),
                       ],
                     ),
