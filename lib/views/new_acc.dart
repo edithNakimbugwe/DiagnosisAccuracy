@@ -1,8 +1,7 @@
-import 'package:diagnosis_accuracy/controllers/my_controllers.dart';
+import 'package:diagnosis_accuracy/controllers/signup_controllers.dart';
 import 'package:diagnosis_accuracy/widgets/custom_password_field_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../widgets/text_form_field.dart';
 import '../widgets/text_widget.dart';
 import 'home_view.dart';
@@ -12,7 +11,7 @@ class NewAccount extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final control = Get.put(MyControllers());
+    final control = Get.put(SignUpControllers());
     return Scaffold(
       appBar: AppBar(
           backgroundColor: Colors.lightGreen,
@@ -35,7 +34,7 @@ class NewAccount extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Form(
-                  key: control.formKey2,
+                  key: control.signupformKey,
                   child: Center(
                     child: Column(
                       children: [
@@ -133,7 +132,7 @@ class NewAccount extends StatelessWidget {
               ),
               InkWell(
                 onTap: () {
-                  if (control.formKey2.currentState!.validate()) {
+                  if (control.signupformKey.currentState!.validate()) {
                     Get.snackbar('', 'Account Created Successfully!',
                         snackPosition: SnackPosition.TOP,
                         backgroundColor: Colors.green,

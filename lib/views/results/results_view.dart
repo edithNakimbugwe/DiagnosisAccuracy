@@ -1,5 +1,5 @@
 import 'package:diagnosis_accuracy/controllers/dropdown_controller.dart';
-import 'package:diagnosis_accuracy/views/results/results_controllers.dart';
+import 'package:diagnosis_accuracy/controllers/results_controllers.dart';
 import 'package:diagnosis_accuracy/widgets/text_form_field.dart';
 import 'package:diagnosis_accuracy/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
@@ -64,8 +64,8 @@ class ResultsPage extends StatelessWidget {
                               width: 100,
                             ),
                             SizedBox(
-                              width: 130,
-                              height: 80,
+                              width: 300,
+                              height: 200,
                               child: Obx(
                                 () => DropdownButtonFormField<String>(
                                   value: dropdownController

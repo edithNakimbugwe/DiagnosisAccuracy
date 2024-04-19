@@ -2,7 +2,7 @@ import 'package:diagnosis_accuracy/services/firebase_services.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class MyControllers extends GetxController {
+class SignUpControllers extends GetxController {
   final AuthController _authController = Get.find();
 
   final e1Control = TextEditingController();
@@ -16,7 +16,7 @@ class MyControllers extends GetxController {
   final oControl = TextEditingController();
   final sControl = TextEditingController();
 
-  final GlobalKey<FormState> signupformKey2 = GlobalKey<FormState>();
+  final GlobalKey<FormState> signupformKey = GlobalKey<FormState>();
 
   var isVisible = false.obs;
 

@@ -1,3 +1,5 @@
+import 'package:diagnosis_accuracy/views/contact_us_page.dart';
+import 'package:diagnosis_accuracy/views/settings.dart';
 import 'package:diagnosis_accuracy/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -103,23 +105,23 @@ class HomePage extends StatelessWidget {
           padding: const EdgeInsets.only(top: 15.0),
           child: Column(
             children: [
-              myDrawerItems(Icons.dashboard, 'Dashboard', () {
+              myDrawerItems(Icons.settings, 'Settings', () {
                 Navigator.pop(context);
-                Get.to(() => const HomePage());
+                Get.to(() => const SettingsPage());
               }),
-              myDrawerItems(Icons.notification_important_rounded, 'Alerts', () {
+              myDrawerItems(Icons.contact_page_rounded, 'Contact Us', () {
                 Navigator.pop(context);
-                Get.to(() => const ResultsPage());
+                Get.to(() => const ContactUspage());
               }),
-              myDrawerItems(Icons.note, 'Notes', () {
-                Navigator.pop(context);
-                Get.to(() => const ResultsPage());
-              }),
-              myDrawerItems(Icons.support_agent_sharp, 'Support', () {
+              myDrawerItems(Icons.info, 'About Us', () {
                 Navigator.pop(context);
                 Get.to(() => const ResultsPage());
               }),
-              myDrawerItems(Icons.person, 'Profile', () {
+              myDrawerItems(Icons.warning_amber, 'Disclaimer', () {
+                Navigator.pop(context);
+                Get.to(() => const ResultsPage());
+              }),
+              myDrawerItems(Icons.notes, 'Terms And Conditions', () {
                 Navigator.pop(context);
                 Get.to(() => const ResultsPage());
               }),
@@ -127,11 +129,7 @@ class HomePage extends StatelessWidget {
                 Navigator.pop(context);
                 Get.to(() => const ResultsPage());
               }),
-              myDrawerItems(Icons.feedback, 'Send feedback', () {
-                Navigator.pop(context);
-                Get.to(() => const ResultsPage());
-              }),
-              myDrawerItems(Icons.settings, 'Settings', () {
+              myDrawerItems(Icons.logout, 'Log Out', () {
                 Navigator.pop(context);
                 Get.to(() => const ResultsPage());
               }),

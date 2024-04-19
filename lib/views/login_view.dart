@@ -1,7 +1,8 @@
-import 'package:diagnosis_accuracy/controllers/my_controllers.dart';
+import 'package:diagnosis_accuracy/controllers/login_controllers.dart';
 import 'package:diagnosis_accuracy/views/home_view.dart';
 import 'package:diagnosis_accuracy/views/new_acc.dart';
 import 'package:diagnosis_accuracy/widgets/custom_password_field_widget.dart';
+
 import 'package:diagnosis_accuracy/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -12,7 +13,7 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final control = Get.put(MyControllers());
+    final loginController = Get.put(LoginControllers());
     return Scaffold(
       body: Center(
         child: Padding(
@@ -40,23 +41,24 @@ class LoginPage extends StatelessWidget {
                 ],
               ),
               Form(
-                key: control.formKey1,
+                key: loginController.loginformKey,
                 child: Center(
                   child: Column(
                     children: [
                       GeneralTextFormFieldWidget(
-                          validation: control.validateEmail,
+                          validation: loginController.validateEmail,
                           text: TextWidget(text: 'Email Address'),
-                          controller: control.eControl,
+                          controller: loginController.eControl,
                           hint: 'youremailaddress@any.com'),
                       Obx(
                         () => CustomPasswordFormField(
-                          controller: control.pControl,
+                          controller: loginController.pControl,
                           hintText: "***********",
-                          userFunction: () => control.toggleVisibility(),
-                          isVisible: control.isVisible.value,
+                          userFunction: () =>
+                              loginController.toggleVisibility(),
+                          isVisible: loginController.isVisible.value,
                           text: TextWidget(text: "Password"),
-                          validate: control.validatePassword,
+                          validate: loginController.validatePassword,
                         ),
                       ),
                       const SizedBox(height: 10),
@@ -74,7 +76,8 @@ class LoginPage extends StatelessWidget {
                       ),
                       InkWell(
                         onTap: () {
-                          if (control.formKey1.currentState!.validate()) {
+                          if (loginController.loginformKey.currentState!
+                              .validate()) {
                             Get.snackbar('', 'Logged in successfully',
                                 snackPosition: SnackPosition.TOP,
                                 backgroundColor: Colors.green,
