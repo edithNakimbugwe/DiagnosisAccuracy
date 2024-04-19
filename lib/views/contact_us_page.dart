@@ -21,7 +21,7 @@ class ContactUspage extends StatelessWidget {
           elevation: 0,
         ),
         body: Padding(
-            padding: const EdgeInsets.fromLTRB(30, 30, 30, 0),
+            padding: const EdgeInsets.fromLTRB(30, 60, 30, 0),
             child: SizedBox(
               width: 450,
               height: 200,
@@ -40,10 +40,11 @@ class ContactUspage extends StatelessWidget {
                     dropdownController.updateSelectedItem(newValue.toString());
                   },
                   decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
+                    focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: const BorderSide(color: Colors.lightGreen)),
                   ),
+                  dropdownColor: Colors.lightGreen,
                 ),
               ),
             )));

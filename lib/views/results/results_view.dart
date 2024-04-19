@@ -37,10 +37,11 @@ class ResultsPage extends StatelessWidget {
                         child: Column(
                       children: [
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             TextWidget(text: 'Age'),
                             const SizedBox(
-                              width: 110,
+                              width: 180,
                             ),
                             SizedBox(
                               width: 100,
@@ -55,17 +56,18 @@ class ResultsPage extends StatelessWidget {
                           ],
                         ),
                         const SizedBox(
-                          height: 30,
+                          height: 20,
                         ),
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             TextWidget(text: 'Gender'),
                             const SizedBox(
-                              width: 100,
+                              width: 160,
                             ),
                             SizedBox(
-                              width: 300,
-                              height: 200,
+                              width: 100,
+                              height: 50,
                               child: Obx(
                                 () => DropdownButtonFormField<String>(
                                   value: dropdownController
@@ -82,19 +84,24 @@ class ResultsPage extends StatelessWidget {
                                     dropdownController.updateSelectedItem(
                                         newValue.toString());
                                   },
+                                  decoration: const InputDecoration(
+                                      focusedBorder: UnderlineInputBorder(
+                                          borderSide: BorderSide(
+                                              color: Colors.lightGreen))),
                                 ),
                               ),
                             ),
                           ],
                         ),
                         const SizedBox(
-                          height: 30,
+                          height: 20,
                         ),
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             TextWidget(text: 'Total_bilirubin'),
                             const SizedBox(
-                              width: 75,
+                              width: 109,
                             ),
                             SizedBox(
                               width: 100,
@@ -112,10 +119,11 @@ class ResultsPage extends StatelessWidget {
                           height: 30,
                         ),
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             TextWidget(text: 'Direct_bilirubin'),
                             const SizedBox(
-                              width: 80,
+                              width: 102,
                             ),
                             SizedBox(
                               width: 100,
@@ -133,10 +141,11 @@ class ResultsPage extends StatelessWidget {
                           height: 30,
                         ),
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             TextWidget(text: 'Alkaline-phosphate'),
                             const SizedBox(
-                              width: 65,
+                              width: 87,
                             ),
                             SizedBox(
                               width: 100,
@@ -154,10 +163,11 @@ class ResultsPage extends StatelessWidget {
                           height: 30,
                         ),
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             TextWidget(text: 'Alamine_aminotransferase'),
                             const SizedBox(
-                              width: 30,
+                              width: 40,
                             ),
                             SizedBox(
                               width: 100,
@@ -175,10 +185,11 @@ class ResultsPage extends StatelessWidget {
                           height: 30,
                         ),
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             TextWidget(text: 'Aspartate-aminotransferase'),
                             const SizedBox(
-                              width: 30,
+                              width: 33,
                             ),
                             SizedBox(
                               width: 100,
@@ -196,10 +207,11 @@ class ResultsPage extends StatelessWidget {
                           height: 30,
                         ),
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             TextWidget(text: 'Total_proteins'),
                             const SizedBox(
-                              width: 100,
+                              width: 125,
                             ),
                             SizedBox(
                               width: 100,
@@ -217,10 +229,11 @@ class ResultsPage extends StatelessWidget {
                           height: 30,
                         ),
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             TextWidget(text: 'Albumin'),
                             const SizedBox(
-                              width: 123,
+                              width: 157,
                             ),
                             SizedBox(
                               width: 100,
@@ -238,6 +251,7 @@ class ResultsPage extends StatelessWidget {
                           height: 30,
                         ),
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             TextWidget(text: 'Albumin_to_globulin_ratio'),
                             const SizedBox(
