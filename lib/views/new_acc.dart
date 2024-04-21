@@ -1,4 +1,5 @@
 import 'package:diagnosis_accuracy/controllers/signup_controllers.dart';
+import 'package:diagnosis_accuracy/views/landing_view.dart';
 import 'package:diagnosis_accuracy/widgets/custom_password_field_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -15,10 +16,12 @@ class NewAccount extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
           backgroundColor: Colors.lightGreen,
-          elevation: 3,
+          elevation: 0,
           leading: IconButton(
             icon: const Icon(Icons.arrow_back),
-            onPressed: () {},
+            onPressed: () {
+              Get.to(() => const MyLandingPage());
+            },
             color: Colors.black,
           ),
           title: Center(
@@ -160,6 +163,7 @@ class NewAccount extends StatelessWidget {
           ),
         ),
       ),
+      backgroundColor: Colors.amber[50],
     );
   }
 }

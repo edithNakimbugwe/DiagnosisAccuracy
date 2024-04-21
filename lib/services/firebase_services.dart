@@ -1,5 +1,5 @@
 import 'package:diagnosis_accuracy/views/landing_view.dart';
-import 'package:diagnosis_accuracy/views/onboarding_view.dart';
+import 'package:diagnosis_accuracy/views/onboarding/onboarding_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';

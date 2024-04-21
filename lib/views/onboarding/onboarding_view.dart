@@ -1,10 +1,10 @@
-import 'package:diagnosis_accuracy/views/onboarding_items.dart';
+import 'package:diagnosis_accuracy/views/onboarding/onboarding_items.dart';
 import 'package:diagnosis_accuracy/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:get/get.dart';
 
-import 'landing_view.dart';
+import '../landing_view.dart';
 
 class OnBoardingView extends StatefulWidget {
   const OnBoardingView({super.key});
@@ -106,7 +106,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                 width: double.infinity,
                 height: 50,
                 decoration: BoxDecoration(
-                  color: Colors.green,
+                  color: Colors.lightGreen,
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Center(
@@ -119,6 +119,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
           )
         ],
       ),
+      backgroundColor: Colors.amber[50],
     );
   }
 
@@ -128,7 +129,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
       height: 10,
       margin: const EdgeInsets.only(right: 5),
       decoration: BoxDecoration(
-        color: currentIndex == index ? Colors.green : Colors.grey,
+        color: currentIndex == index ? Colors.lightGreen : Colors.grey,
         borderRadius: BorderRadius.circular(20),
       ),
     );

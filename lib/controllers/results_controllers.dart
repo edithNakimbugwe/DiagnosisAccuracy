@@ -13,7 +13,7 @@ class ResultsControllers extends GetxController {
   final t9Control = TextEditingController();
   final t10Control = TextEditingController();
 
-  final GlobalKey<FormState> formKey3 = GlobalKey<FormState>();
+  final GlobalKey<FormState> resultsFormKey = GlobalKey<FormState>();
 
   String? validateAge(int? age) {
     if (age == null) {

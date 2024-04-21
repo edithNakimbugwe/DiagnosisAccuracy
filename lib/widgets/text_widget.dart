@@ -19,6 +19,7 @@ class TextWidget extends StatelessWidget {
       style: TextStyle(
           color: colors,
           fontSize: isHeading ? 22 : 14,
+          fontFamily: 'Times New Roman',
           fontWeight: isHeading ? FontWeight.bold : FontWeight.normal),
     );
   }

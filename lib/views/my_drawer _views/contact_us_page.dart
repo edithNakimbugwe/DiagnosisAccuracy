@@ -1,7 +1,7 @@
 import 'package:diagnosis_accuracy/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../controllers/dropdown_controller.dart';
+import '../../controllers/dropdown_controller.dart';
 
 class ContactUspage extends StatelessWidget {
   const ContactUspage({super.key});

@@ -1,58 +1,157 @@
-import 'package:diagnosis_accuracy/views/contact_us_page.dart';
-import 'package:diagnosis_accuracy/views/settings.dart';
+import 'package:diagnosis_accuracy/controllers/patient_data_controllers.dart';
+import 'package:diagnosis_accuracy/views/my_drawer%20_views/contact_us_page.dart';
+import 'package:diagnosis_accuracy/views/my_drawer%20_views/settings.dart';
+import 'package:diagnosis_accuracy/widgets/text_form_field.dart';
 import 'package:diagnosis_accuracy/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import 'results/results_view.dart';
+import 'lab_results_view.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final patientDataController = Get.put(PatientDataController());
     return Scaffold(
       appBar: AppBar(
-          backgroundColor: Colors.lightGreen,
-          elevation: 1,
-          title: Center(
-            child: TextWidget(
-              text: 'HepaCheck',
-              isHeading: true,
-            ),
-          )),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            TextWidget(text: 'Welcome to your diagnosis asistant!'),
-            const SizedBox(height: 20),
-            TextWidget(text: 'Please tap the button below to log findings.'),
-            const SizedBox(height: 20),
-            InkWell(
-              onTap: () {
-                Get.to(() => const ResultsPage());
+          leading: Builder(builder: (BuildContext context) {
+            return IconButton(
+              icon: const Icon(
+                Icons.menu,
+                color: Colors.black,
+              ),
+              onPressed: () {
+                Scaffold.of(context).openDrawer();
               },
-              child: Container(
-                color: Colors.lightGreen,
+            );
+          }),
+          backgroundColor: Colors.white,
+          elevation: 0,
+          title: Row(
+            children: [
+              const SizedBox(
+                width: 30,
+              ),
+              Image.asset(
+                'assets/images/3.jpg',
                 height: 40,
-                width: 150,
-                child: Center(
-                  child: TextWidget(
-                    text: 'Click me',
-                    isHeading: true,
+                width: 40,
+              ),
+              const SizedBox(
+                width: 15,
+              ),
+              TextWidget(
+                text: 'HepaCheck',
+                isHeading: true,
+              ),
+            ],
+          )),
+      body: Builder(builder: (BuildContext context) {
+        return Center(
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                const SizedBox(
+                  height: 30,
+                ),
+                const Text(
+                  'Welcome!',
+                  style: TextStyle(
+                    fontFamily: 'Times New Roman',
+                    fontSize: 40,
+                    color: Colors.lightGreen,
                   ),
                 ),
-              ),
-            )
-          ],
-        ),
-      ),
+                const SizedBox(height: 30),
+                TextWidget(
+                    text: 'Please enter patient\'s biodata in the form below '),
+                const SizedBox(height: 20),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(45, 15, 45, 0),
+                  child: Form(
+                      key: patientDataController.patientDataFormKey,
+                      child: Column(children: [
+                        GeneralTextFormFieldWidget(
+                            validation:
+                                patientDataController.validatePatientName,
+                            text: TextWidget(text: 'Patient Name'),
+                            controller: patientDataController.patientName,
+                            hint: 'Enter Patient\'s name here'),
+                        GeneralTextFormFieldWidget(
+                            validation: patientDataController.validatePatientID,
+                            text: TextWidget(text: 'Patient ID'),
+                            controller: patientDataController.patientID,
+                            hint: 'U0000'),
+                        GeneralTextFormFieldWidget(
+                            validation:
+                                patientDataController.validatePatientName,
+                            text: TextWidget(text: 'Patient Name'),
+                            controller: patientDataController.patientName,
+                            hint: 'Enter Patient\'s name here'),
+                        GeneralTextFormFieldWidget(
+                            validation:
+                                patientDataController.validatePatientTel,
+                            text: TextWidget(text: 'Patient Phone number'),
+                            controller: patientDataController.patientTel,
+                            hint: '0756050438'),
+                        GeneralTextFormFieldWidget(
+                            validation:
+                                patientDataController.validatePatientAddress,
+                            text: TextWidget(text: 'Patient Address'),
+                            controller: patientDataController.patientAddress,
+                            hint: 'Enter Patient\'s residential address'),
+                        GeneralTextFormFieldWidget(
+                            validation:
+                                patientDataController.validateCurrentMedication,
+                            text: TextWidget(text: 'Current Medication'),
+                            controller: patientDataController.currentMedication,
+                            hint: 'eg blood pressure medication'),
+                        GeneralTextFormFieldWidget(
+                            validation:
+                                patientDataController.validatePatientAllergies,
+                            text: TextWidget(text: 'Allergies'),
+                            controller: patientDataController.patientAllergies,
+                            hint: 'eg food allergies')
+                      ])),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                InkWell(
+                  onTap: () {
+                    Get.to(() => const ResultsPage());
+                  },
+                  child: Container(
+                    height: 40,
+                    width: 150,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: Colors.lightGreen),
+                    child: Center(
+                      child: TextWidget(
+                        text: 'Click me',
+                        isHeading: true,
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                )
+              ],
+            ),
+          ),
+        );
+      }),
       bottomNavigationBar: BottomNavigationBar(
         items: [
           BottomNavigationBarItem(
             icon: IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Get.to(() => const HomePage());
+              },
               icon: const Icon(Icons.home),
             ),
             label: 'Home',
@@ -75,6 +174,7 @@ class HomePage extends StatelessWidget {
           ),
         ),
       ),
+      backgroundColor: Colors.amber[50],
     );
   }
 

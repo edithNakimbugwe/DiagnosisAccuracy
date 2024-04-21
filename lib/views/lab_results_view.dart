@@ -26,13 +26,13 @@ class ResultsPage extends StatelessWidget {
               ),
             )),
         body: Padding(
-          padding: const EdgeInsets.all(30),
+          padding: const EdgeInsets.all(20),
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Form(
-                    key: resultsControl.formKey3,
+                    key: resultsControl.resultsFormKey,
                     child: Center(
                         child: Column(
                       children: [
@@ -41,7 +41,7 @@ class ResultsPage extends StatelessWidget {
                           children: [
                             TextWidget(text: 'Age'),
                             const SizedBox(
-                              width: 180,
+                              width: 200,
                             ),
                             SizedBox(
                               width: 100,
@@ -63,7 +63,7 @@ class ResultsPage extends StatelessWidget {
                           children: [
                             TextWidget(text: 'Gender'),
                             const SizedBox(
-                              width: 160,
+                              width: 175,
                             ),
                             SizedBox(
                               width: 100,
@@ -101,7 +101,7 @@ class ResultsPage extends StatelessWidget {
                           children: [
                             TextWidget(text: 'Total_bilirubin'),
                             const SizedBox(
-                              width: 109,
+                              width: 112,
                             ),
                             SizedBox(
                               width: 100,
@@ -123,7 +123,7 @@ class ResultsPage extends StatelessWidget {
                           children: [
                             TextWidget(text: 'Direct_bilirubin'),
                             const SizedBox(
-                              width: 102,
+                              width: 104,
                             ),
                             SizedBox(
                               width: 100,
@@ -145,7 +145,7 @@ class ResultsPage extends StatelessWidget {
                           children: [
                             TextWidget(text: 'Alkaline-phosphate'),
                             const SizedBox(
-                              width: 87,
+                              width: 94,
                             ),
                             SizedBox(
                               width: 100,
@@ -167,7 +167,7 @@ class ResultsPage extends StatelessWidget {
                           children: [
                             TextWidget(text: 'Alamine_aminotransferase'),
                             const SizedBox(
-                              width: 40,
+                              width: 45,
                             ),
                             SizedBox(
                               width: 100,
@@ -189,7 +189,7 @@ class ResultsPage extends StatelessWidget {
                           children: [
                             TextWidget(text: 'Aspartate-aminotransferase'),
                             const SizedBox(
-                              width: 33,
+                              width: 37,
                             ),
                             SizedBox(
                               width: 100,
@@ -211,7 +211,7 @@ class ResultsPage extends StatelessWidget {
                           children: [
                             TextWidget(text: 'Total_proteins'),
                             const SizedBox(
-                              width: 125,
+                              width: 137,
                             ),
                             SizedBox(
                               width: 100,
@@ -233,7 +233,7 @@ class ResultsPage extends StatelessWidget {
                           children: [
                             TextWidget(text: 'Albumin'),
                             const SizedBox(
-                              width: 157,
+                              width: 170,
                             ),
                             SizedBox(
                               width: 100,
@@ -255,7 +255,7 @@ class ResultsPage extends StatelessWidget {
                           children: [
                             TextWidget(text: 'Albumin_to_globulin_ratio'),
                             const SizedBox(
-                              width: 40,
+                              width: 37,
                             ),
                             SizedBox(
                               width: 100,
@@ -275,15 +275,40 @@ class ResultsPage extends StatelessWidget {
                   height: 30,
                 ),
                 Center(
-                    child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.lightGreen),
-                        onPressed: () {},
-                        child: TextWidget(text: 'SUBMIT')))
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.lightGreen,
+                    ),
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: TextWidget(
+                              text: 'Diagnostic Outcome',
+                              isHeading: true,
+                            ),
+                            content: TextWidget(text: ''),
+                            actions: [
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                                child: TextWidget(text: 'Close'),
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                    },
+                    child: TextWidget(text: 'SUBMIT'),
+                  ),
+                )
               ],
             ),
           ),
         ),
+        backgroundColor: Colors.amber[50],
       ),
     );
   }

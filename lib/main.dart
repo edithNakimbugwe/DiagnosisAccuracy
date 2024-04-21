@@ -1,7 +1,7 @@
 import 'package:diagnosis_accuracy/bindings/my_bindings.dart';
 import 'package:diagnosis_accuracy/controllers/network_controllers.dart';
 import 'package:diagnosis_accuracy/firebase_options.dart';
-import 'package:diagnosis_accuracy/views/onboarding_view.dart';
+import 'package:diagnosis_accuracy/views/onboarding/onboarding_view.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

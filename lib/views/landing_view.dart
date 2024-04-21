@@ -71,6 +71,7 @@ class MyLandingPage extends StatelessWidget {
           ),
         ),
       ),
+      backgroundColor: Colors.amber[50],
     );
   }
 }
