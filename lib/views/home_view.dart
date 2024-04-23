@@ -159,7 +159,21 @@ class HomePage extends StatelessWidget {
             label: 'Home',
           ),
           BottomNavigationBarItem(
-              icon: IconButton(onPressed: () {}, icon: const Icon(Icons.menu)),
+              icon: IconButton(
+                  onPressed: () {
+                    showModalBottomSheet(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return Container(
+                          color: Colors.blueGrey,
+                          padding: const EdgeInsets.all(80),
+                          child:
+                              TextWidget(text: 'This is a modal bottom sheet'),
+                        );
+                      },
+                    );
+                  },
+                  icon: const Icon(Icons.more)),
               label: 'More')
         ],
         backgroundColor: Colors.lightGreen,
