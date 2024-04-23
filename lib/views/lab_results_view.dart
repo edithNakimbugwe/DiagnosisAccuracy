@@ -284,17 +284,21 @@ class ResultsPage extends StatelessWidget {
                         context: context,
                         builder: (BuildContext context) {
                           return AlertDialog(
+                            backgroundColor: Colors.amber[50],
                             title: TextWidget(
                               text: 'Diagnostic Outcome',
                               isHeading: true,
+                              colors: Colors.lightGreen,
                             ),
-                            content: TextWidget(text: ''),
+                            content: TextWidget(text: 'Super Healthy Liver!'),
                             actions: [
                               TextButton(
                                 onPressed: () {
                                   Navigator.of(context).pop();
                                 },
-                                child: TextWidget(text: 'Close'),
+                                child: TextWidget(
+                                  text: 'Close',
+                                ),
                               ),
                             ],
                           );

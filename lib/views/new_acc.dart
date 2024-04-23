@@ -12,7 +12,7 @@ class NewAccount extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final control = Get.put(SignUpControllers());
+    final signupController = Get.put(SignUpControllers());
     return Scaffold(
       appBar: AppBar(
           backgroundColor: Colors.lightGreen,
@@ -37,59 +37,61 @@ class NewAccount extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Form(
-                  key: control.signupformKey,
+                  key: signupController.signupformKey,
                   child: Center(
                     child: Column(
                       children: [
                         GeneralTextFormFieldWidget(
-                            validation: control.validateName,
+                            validation: signupController.validateName,
                             text: TextWidget(text: 'First Name'),
-                            controller: control.n1Control,
+                            controller: signupController.n1Control,
                             hint: 'eg. EDITH'),
                         GeneralTextFormFieldWidget(
-                            validation: control.validateName,
+                            validation: signupController.validateName,
                             text: TextWidget(text: 'Last Name'),
-                            controller: control.n2Control,
+                            controller: signupController.n2Control,
                             hint: 'eg. AWINO'),
                         GeneralTextFormFieldWidget(
-                            validation: control.validateEmail,
+                            validation: signupController.validateEmail,
                             text: TextWidget(text: 'Email Address'),
-                            controller: control.e1Control,
+                            controller: signupController.e1Control,
                             hint: 'youremailaddress@any.com'),
                         Obx(
                           () => CustomPasswordFormField(
-                            controller: control.p1Control,
+                            controller: signupController.p1Control,
                             hintText: "*********",
-                            userFunction: () => control.toggleVisibility(),
-                            isVisible: control.isVisible.value,
+                            userFunction: () =>
+                                signupController.toggleVisibility(),
+                            isVisible: signupController.isVisible.value,
                             text: TextWidget(text: "Password"),
-                            validate: control.validatePassword,
+                            validate: signupController.validatePassword,
                           ),
                         ),
                         Obx(
                           () => CustomPasswordFormField(
-                            controller: control.p2Control,
+                            controller: signupController.p2Control,
                             hintText: "*********",
-                            userFunction: () => control.toggleVisibility(),
-                            isVisible: control.isVisible.value,
+                            userFunction: () =>
+                                signupController.toggleVisibility(),
+                            isVisible: signupController.isVisible.value,
                             text: TextWidget(text: "Comfirm Password"),
-                            validate: control.validatePassword,
+                            validate: signupController.validatePassword,
                           ),
                         ),
                         GeneralTextFormFieldWidget(
-                            validation: control.validateCountry,
+                            validation: signupController.validateCountry,
                             text: TextWidget(text: 'Country'),
-                            controller: control.cControl,
+                            controller: signupController.cControl,
                             hint: 'eg. Uganda'),
                         GeneralTextFormFieldWidget(
-                            validation: control.validateOccupation,
+                            validation: signupController.validateOccupation,
                             text: TextWidget(text: 'Occupation'),
-                            controller: control.oControl,
+                            controller: signupController.oControl,
                             hint: 'eg. Physician'),
                         GeneralTextFormFieldWidget(
-                            validation: control.validateSpecialty,
+                            validation: signupController.validateSpecialty,
                             text: TextWidget(text: 'Specialty'),
-                            controller: control.sControl,
+                            controller: signupController.sControl,
                             hint: ' eg. Hepatologist'),
                       ],
                     ),
@@ -135,16 +137,8 @@ class NewAccount extends StatelessWidget {
               ),
               InkWell(
                 onTap: () {
-                  if (control.signupformKey.currentState!.validate()) {
-                    Get.snackbar('', 'Account Created Successfully!',
-                        snackPosition: SnackPosition.TOP,
-                        backgroundColor: Colors.green,
-                        colorText: Colors.white,
-                        duration: const Duration(seconds: 3),
-                        isDismissible: true,
-                        dismissDirection: DismissDirection.up);
-
-                    Get.to(() => const HomePage());
+                  if (signupController.signupformKey.currentState!.validate()) {
+                    signupController.registerUser();
                   }
                 },
                 child: Container(

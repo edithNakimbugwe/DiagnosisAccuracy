@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "357418658672",
+    "project_id": "hepacheckapp",
+    "storage_bucket": "hepacheckapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:357418658672:android:0db8c665fcdc2037e73db5",
+        "android_client_info": {
+          "package_name": "com.example.test"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB1bA30fW1iDqiAt3hwWwVaA0uMzGmv5PU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

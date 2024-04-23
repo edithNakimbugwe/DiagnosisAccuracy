@@ -1,8 +1,6 @@
 import 'package:diagnosis_accuracy/controllers/login_controllers.dart';
-import 'package:diagnosis_accuracy/views/home_view.dart';
 import 'package:diagnosis_accuracy/views/new_acc.dart';
 import 'package:diagnosis_accuracy/widgets/custom_password_field_widget.dart';
-
 import 'package:diagnosis_accuracy/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -78,14 +76,7 @@ class LoginPage extends StatelessWidget {
                         onTap: () {
                           if (loginController.loginformKey.currentState!
                               .validate()) {
-                            Get.snackbar('', 'Logged in successfully',
-                                snackPosition: SnackPosition.TOP,
-                                backgroundColor: Colors.green,
-                                colorText: Colors.white,
-                                duration: const Duration(seconds: 3),
-                                isDismissible: true,
-                                dismissDirection: DismissDirection.up);
-                            Get.to(() => const HomePage());
+                            loginController.login();
                           }
                         },
                         child: Container(

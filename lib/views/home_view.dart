@@ -1,4 +1,6 @@
+import 'package:diagnosis_accuracy/controllers/logout_controllers.dart';
 import 'package:diagnosis_accuracy/controllers/patient_data_controllers.dart';
+import 'package:diagnosis_accuracy/services/firebase_services.dart';
 import 'package:diagnosis_accuracy/views/my_drawer%20_views/contact_us_page.dart';
 import 'package:diagnosis_accuracy/views/my_drawer%20_views/settings.dart';
 import 'package:diagnosis_accuracy/widgets/text_form_field.dart';
@@ -8,11 +10,13 @@ import 'package:get/get.dart';
 import 'lab_results_view.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  HomePage({super.key});
+  final logoutController = Get.put(LogOutController());
 
   @override
   Widget build(BuildContext context) {
-    final patientDataController = Get.put(PatientDataController());
+    final controller = Get.put(PatientDataController());
+
     return Scaffold(
       appBar: AppBar(
           leading: Builder(builder: (BuildContext context) {
@@ -71,48 +75,37 @@ class HomePage extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.fromLTRB(45, 15, 45, 0),
                   child: Form(
-                      key: patientDataController.patientDataFormKey,
+                      key: controller.patientDataFormKey,
                       child: Column(children: [
                         GeneralTextFormFieldWidget(
-                            validation:
-                                patientDataController.validatePatientName,
+                            validation: controller.validatePatientName,
                             text: TextWidget(text: 'Patient Name'),
-                            controller: patientDataController.patientName,
+                            controller: controller.patientName,
                             hint: 'Enter Patient\'s name here'),
                         GeneralTextFormFieldWidget(
-                            validation: patientDataController.validatePatientID,
+                            validation: controller.validatePatientID,
                             text: TextWidget(text: 'Patient ID'),
-                            controller: patientDataController.patientID,
+                            controller: controller.patientID,
                             hint: 'U0000'),
                         GeneralTextFormFieldWidget(
-                            validation:
-                                patientDataController.validatePatientName,
-                            text: TextWidget(text: 'Patient Name'),
-                            controller: patientDataController.patientName,
-                            hint: 'Enter Patient\'s name here'),
-                        GeneralTextFormFieldWidget(
-                            validation:
-                                patientDataController.validatePatientTel,
+                            validation: controller.validatePatientTel,
                             text: TextWidget(text: 'Patient Phone number'),
-                            controller: patientDataController.patientTel,
+                            controller: controller.patientTel,
                             hint: '0756050438'),
                         GeneralTextFormFieldWidget(
-                            validation:
-                                patientDataController.validatePatientAddress,
+                            validation: controller.validatePatientAddress,
                             text: TextWidget(text: 'Patient Address'),
-                            controller: patientDataController.patientAddress,
+                            controller: controller.patientAddress,
                             hint: 'Enter Patient\'s residential address'),
                         GeneralTextFormFieldWidget(
-                            validation:
-                                patientDataController.validateCurrentMedication,
+                            validation: controller.validateCurrentMedication,
                             text: TextWidget(text: 'Current Medication'),
-                            controller: patientDataController.currentMedication,
+                            controller: controller.currentMedication,
                             hint: 'eg blood pressure medication'),
                         GeneralTextFormFieldWidget(
-                            validation:
-                                patientDataController.validatePatientAllergies,
+                            validation: controller.validatePatientAllergies,
                             text: TextWidget(text: 'Allergies'),
-                            controller: patientDataController.patientAllergies,
+                            controller: controller.patientAllergies,
                             hint: 'eg food allergies')
                       ])),
                 ),
@@ -121,6 +114,15 @@ class HomePage extends StatelessWidget {
                 ),
                 InkWell(
                   onTap: () {
+                    AuthController.instance.addPatientData(
+                        patientName: controller.patientName.toString().trim(),
+                        patientID: controller.patientID.toString().trim(),
+                        phoneNumber: controller.patientTel.toString().trim(),
+                        address: controller.patientAddress.toString().trim(),
+                        currentMedication:
+                            controller.currentMedication.toString().trim(),
+                        allergies:
+                            controller.patientAllergies.toString().trim());
                     Get.to(() => const ResultsPage());
                   },
                   child: Container(
@@ -131,7 +133,7 @@ class HomePage extends StatelessWidget {
                         color: Colors.lightGreen),
                     child: Center(
                       child: TextWidget(
-                        text: 'Click me',
+                        text: 'Next',
                         isHeading: true,
                       ),
                     ),
@@ -150,7 +152,7 @@ class HomePage extends StatelessWidget {
           BottomNavigationBarItem(
             icon: IconButton(
               onPressed: () {
-                Get.to(() => const HomePage());
+                Get.to(() => HomePage());
               },
               icon: const Icon(Icons.home),
             ),
@@ -230,8 +232,8 @@ class HomePage extends StatelessWidget {
                 Get.to(() => const ResultsPage());
               }),
               myDrawerItems(Icons.logout, 'Log Out', () {
+                logoutController.logout();
                 Navigator.pop(context);
-                Get.to(() => const ResultsPage());
               }),
             ],
           ),
