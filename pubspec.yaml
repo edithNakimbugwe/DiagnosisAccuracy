@@ -32,6 +32,7 @@ dependencies:
   liquid_swipe:
   connectivity_plus:
   lottie:
+  multiselect:
   get:
   flutter:
     sdk: flutter

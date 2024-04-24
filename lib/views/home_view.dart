@@ -1,4 +1,5 @@
 import 'package:diagnosis_accuracy/controllers/logout_controllers.dart';
+import 'package:diagnosis_accuracy/controllers/multi_select_dropdown_controller.dart';
 import 'package:diagnosis_accuracy/controllers/patient_data_controllers.dart';
 import 'package:diagnosis_accuracy/services/firebase_services.dart';
 import 'package:diagnosis_accuracy/views/my_drawer%20_views/contact_us_page.dart';
@@ -8,6 +9,7 @@ import 'package:diagnosis_accuracy/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:multiselect/multiselect.dart';
 import 'lab_results_view.dart';
 
 Future<String> loadAboutUsTextFile() async {
@@ -29,6 +31,7 @@ Future<String> loadPrivacyPolicyTextFile() async {
 class HomePage extends StatelessWidget {
   HomePage({super.key});
   final logoutController = Get.put(LogOutController());
+  final multiselectController = Get.put(MultiSelectDropdown());
 
   @override
   Widget build(BuildContext context) {
@@ -119,6 +122,7 @@ class HomePage extends StatelessWidget {
                             text: TextWidget(text: 'Current Medication'),
                             controller: controller.currentMedication,
                             hint: 'eg blood pressure medication'),
+                        
                         GeneralTextFormFieldWidget(
                             validation: controller.validatePatientAllergies,
                             text: TextWidget(text: 'Allergies'),
