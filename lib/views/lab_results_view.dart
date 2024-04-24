@@ -292,13 +292,27 @@ class ResultsPage extends StatelessWidget {
                             ),
                             content: TextWidget(text: 'Super Healthy Liver!'),
                             actions: [
-                              TextButton(
-                                onPressed: () {
-                                  Navigator.of(context).pop();
-                                },
-                                child: TextWidget(
-                                  text: 'Close',
-                                ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                    child: TextWidget(
+                                      text: 'Analyse result',
+                                    ),
+                                  ),
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                    child: TextWidget(
+                                      text: 'Close',
+                                    ),
+                                  ),
+                                ],
                               ),
                             ],
                           );

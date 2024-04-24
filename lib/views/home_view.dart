@@ -6,8 +6,25 @@ import 'package:diagnosis_accuracy/views/my_drawer%20_views/settings.dart';
 import 'package:diagnosis_accuracy/widgets/text_form_field.dart';
 import 'package:diagnosis_accuracy/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'lab_results_view.dart';
+
+Future<String> loadAboutUsTextFile() async {
+  return await rootBundle.loadString('assets/docs/about_us.html');
+}
+
+Future<String> loadDisclaimerTextFile() async {
+  return await rootBundle.loadString('assets/docs/disclaimer.html');
+}
+
+Future<String> loadTermsAndConditionsTextFile() async {
+  return await rootBundle.loadString('assets/docs/terms_and_conditions.html');
+}
+
+Future<String> loadPrivacyPolicyTextFile() async {
+  return await rootBundle.loadString('assets/docs/privacypolicy.html');
+}
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
@@ -222,28 +239,22 @@ class HomePage extends StatelessWidget {
           child: Column(
             children: [
               myDrawerItems(Icons.settings, 'Settings', () {
-                Navigator.pop(context);
                 Get.to(() => const SettingsPage());
               }),
               myDrawerItems(Icons.contact_page_rounded, 'Contact Us', () {
-                Navigator.pop(context);
                 Get.to(() => const ContactUspage());
               }),
               myDrawerItems(Icons.info, 'About Us', () {
-                Navigator.pop(context);
-                Get.to(() => const ResultsPage());
+                _onPressedAboutUs(context);
               }),
               myDrawerItems(Icons.warning_amber, 'Disclaimer', () {
-                Navigator.pop(context);
-                Get.to(() => const ResultsPage());
+                _onPressedDisclaimer(context);
               }),
               myDrawerItems(Icons.notes, 'Terms And Conditions', () {
-                Navigator.pop(context);
-                Get.to(() => const ResultsPage());
+                _onPressedTermsAndConditions(context);
               }),
               myDrawerItems(Icons.privacy_tip, 'Privacy Policy', () {
-                Navigator.pop(context);
-                Get.to(() => const ResultsPage());
+                _onPressedPrivacyPolicy(context);
               }),
               myDrawerItems(Icons.logout, 'Log Out', () {
                 logoutController.logout();
@@ -274,4 +285,103 @@ class HomePage extends StatelessWidget {
           ),
         ),
       );
+  void _onPressedAboutUs(BuildContext context) async {
+    String fileContent = await loadAboutUsTextFile();
+
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: TextWidget(
+            text: 'About Us',
+            isHeading: true,
+          ),
+          content: SingleChildScrollView(child: TextWidget(text: fileContent)),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text('Close'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _onPressedDisclaimer(BuildContext context) async {
+    String fileContent = await loadDisclaimerTextFile();
+
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: TextWidget(
+            text: 'Disclaimer',
+            isHeading: true,
+          ),
+          content: SingleChildScrollView(child: TextWidget(text: fileContent)),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text('Close'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _onPressedTermsAndConditions(BuildContext context) async {
+    String fileContent = await loadTermsAndConditionsTextFile();
+
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: TextWidget(
+            text: 'Terms and conditions',
+            isHeading: true,
+          ),
+          content: SingleChildScrollView(child: TextWidget(text: fileContent)),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text('Close'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _onPressedPrivacyPolicy(BuildContext context) async {
+    String fileContent = await loadPrivacyPolicyTextFile();
+
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: TextWidget(
+            text: 'Privacy Policy',
+            isHeading: true,
+          ),
+          content: SingleChildScrollView(child: TextWidget(text: fileContent)),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text('Close'),
+            ),
+          ],
+        );
+      },
+    );
+  }
 }
