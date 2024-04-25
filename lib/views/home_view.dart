@@ -1,5 +1,4 @@
 import 'package:diagnosis_accuracy/controllers/logout_controllers.dart';
-import 'package:diagnosis_accuracy/controllers/multi_select_dropdown_controller.dart';
 import 'package:diagnosis_accuracy/controllers/patient_data_controllers.dart';
 import 'package:diagnosis_accuracy/services/firebase_services.dart';
 import 'package:diagnosis_accuracy/views/my_drawer%20_views/contact_us_page.dart';
@@ -9,7 +8,7 @@ import 'package:diagnosis_accuracy/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:multiselect/multiselect.dart';
+
 import 'lab_results_view.dart';
 
 Future<String> loadAboutUsTextFile() async {
@@ -31,7 +30,6 @@ Future<String> loadPrivacyPolicyTextFile() async {
 class HomePage extends StatelessWidget {
   HomePage({super.key});
   final logoutController = Get.put(LogOutController());
-  final multiselectController = Get.put(MultiSelectDropdown());
 
   @override
   Widget build(BuildContext context) {
@@ -122,7 +120,6 @@ class HomePage extends StatelessWidget {
                             text: TextWidget(text: 'Current Medication'),
                             controller: controller.currentMedication,
                             hint: 'eg blood pressure medication'),
-                        
                         GeneralTextFormFieldWidget(
                             validation: controller.validatePatientAllergies,
                             text: TextWidget(text: 'Allergies'),
@@ -135,16 +132,18 @@ class HomePage extends StatelessWidget {
                 ),
                 InkWell(
                   onTap: () {
-                    AuthController.instance.addPatientData(
-                        patientName: controller.patientName.toString().trim(),
-                        patientID: controller.patientID.toString().trim(),
-                        phoneNumber: controller.patientTel.toString().trim(),
-                        address: controller.patientAddress.toString().trim(),
-                        currentMedication:
-                            controller.currentMedication.toString().trim(),
-                        allergies:
-                            controller.patientAllergies.toString().trim());
-                    Get.to(() => const ResultsPage());
+                    if (controller.patientDataFormKey.currentState!
+                        .validate()) {
+                      AuthController.instance.addPatientData(
+                          patientName: controller.patientName.text.trim(),
+                          patientID: controller.patientID.text.trim(),
+                          phoneNumber: controller.patientTel.text.trim(),
+                          address: controller.patientAddress.text.trim(),
+                          currentMedication:
+                              controller.currentMedication.text.trim(),
+                          allergies: controller.patientAllergies.text.trim());
+                      Get.to(() => const ResultsPage());
+                    }
                   },
                   child: Container(
                     height: 40,

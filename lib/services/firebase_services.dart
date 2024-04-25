@@ -16,6 +16,7 @@ class AuthController extends GetxController {
     _firebaseUser = Rx<User?>(_auth.currentUser);
     _firebaseUser.bindStream(_auth.authStateChanges());
     ever(_firebaseUser, pager);
+    retrieveSomeData();
   }
 
   void pager(User? user) {
@@ -79,5 +80,13 @@ class AuthController extends GetxController {
     } catch (e) {
       Get.snackbar('error', e.toString());
     }
+  }
+
+  void retrieveSomeData() {
+    DatabaseReference patientRef =
+        FirebaseDatabase.instance.ref().child('patients');
+    patientRef.once().then((snap) {
+      print(snap.snapshot.value);
+    });
   }
 }

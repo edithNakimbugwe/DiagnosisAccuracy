@@ -13,42 +13,42 @@ class PatientDataController extends GetxController {
 
   String? validatePatientName(String? email) {
     if (email == '' || email == null) {
-      return 'Email Address required';
+      return 'Patient name required';
     }
     return null;
   }
 
   String? validatePatientID(String? password) {
     if (password == '' || password == null) {
-      return 'password required';
+      return 'Patient ID is required';
     }
     return null;
   }
 
   String? validatePatientTel(String? name) {
     if (name == '' || name == null) {
-      return 'Name Field cannot be empty';
+      return 'Enter Patient\' phone number';
     }
     return null;
   }
 
   String? validatePatientAddress(String? date) {
     if (date == '' || date == null) {
-      return 'Enter Date Of Birth';
+      return 'Enter Patient\'s residential address';
     }
     return null;
   }
 
   String? validateCurrentMedication(String? country) {
     if (country == '' || country == null) {
-      return 'Country of residence is required';
+      return 'if not on any put null';
     }
     return null;
   }
 
   String? validatePatientAllergies(String? occupation) {
     if (occupation == '' || occupation == null) {
-      return 'Your occupation is required';
+      return 'if no allergies, put null';
     }
     return null;
   }

@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../widgets/text_form_field.dart';
 import '../widgets/text_widget.dart';
-import 'home_view.dart';
 
 class NewAccount extends StatelessWidget {
   const NewAccount({super.key});
