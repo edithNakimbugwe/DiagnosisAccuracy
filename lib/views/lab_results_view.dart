@@ -1,5 +1,6 @@
 import 'package:diagnosis_accuracy/controllers/dropdown_controller.dart';
 import 'package:diagnosis_accuracy/controllers/results_controllers.dart';
+import 'package:diagnosis_accuracy/views/patient_report.dart';
 import 'package:diagnosis_accuracy/widgets/text_form_field.dart';
 import 'package:diagnosis_accuracy/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
@@ -37,7 +38,7 @@ class ResultsPage extends StatelessWidget {
                         child: Column(
                       children: [
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
+                          mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             TextWidget(text: 'Age'),
                             const SizedBox(
@@ -61,47 +62,9 @@ class ResultsPage extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            TextWidget(text: 'Gender'),
+                            TextWidget(text: ' Albumin'),
                             const SizedBox(
-                              width: 175,
-                            ),
-                            SizedBox(
-                              width: 100,
-                              height: 50,
-                              child: Obx(
-                                () => DropdownButtonFormField<String>(
-                                  value: dropdownController
-                                          .selectedItem.value.isNotEmpty
-                                      ? dropdownController.selectedItem.value
-                                      : dropdownItems.first,
-                                  items: dropdownItems.map((String value) {
-                                    return DropdownMenuItem<String>(
-                                      value: value,
-                                      child: Text(value),
-                                    );
-                                  }).toList(),
-                                  onChanged: (newValue) {
-                                    dropdownController.updateSelectedItem(
-                                        newValue.toString());
-                                  },
-                                  decoration: const InputDecoration(
-                                      focusedBorder: UnderlineInputBorder(
-                                          borderSide: BorderSide(
-                                              color: Colors.lightGreen))),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            TextWidget(text: 'Total_bilirubin'),
-                            const SizedBox(
-                              width: 112,
+                              width: 160,
                             ),
                             SizedBox(
                               width: 100,
@@ -110,20 +73,20 @@ class ResultsPage extends StatelessWidget {
                                   validation: resultsControl.validateTBilirubin,
                                   text: TextWidget(text: ''),
                                   controller: resultsControl.t3Control,
-                                  hint: '1.2'),
+                                  hint: '3.4-5.4'),
                             ),
-                            TextWidget(text: 'mg/dL')
+                            TextWidget(text: 'g/dL')
                           ],
                         ),
                         const SizedBox(
                           height: 30,
                         ),
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
+                          mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            TextWidget(text: 'Direct_bilirubin'),
+                            TextWidget(text: 'Alkaline-phosphate'),
                             const SizedBox(
-                              width: 104,
+                              width: 90,
                             ),
                             SizedBox(
                               width: 100,
@@ -132,28 +95,6 @@ class ResultsPage extends StatelessWidget {
                                   validation: resultsControl.validateDBilrubin,
                                   text: TextWidget(text: ''),
                                   controller: resultsControl.t4Control,
-                                  hint: '0.3'),
-                            ),
-                            TextWidget(text: 'mg/dL')
-                          ],
-                        ),
-                        const SizedBox(
-                          height: 30,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            TextWidget(text: 'Alkaline-phosphate'),
-                            const SizedBox(
-                              width: 94,
-                            ),
-                            SizedBox(
-                              width: 100,
-                              height: 30,
-                              child: GeneralTextFormFieldWidget(
-                                  validation: resultsControl.validateAlkalinep,
-                                  text: TextWidget(text: ''),
-                                  controller: resultsControl.t5Control,
                                   hint: '44-147'),
                             ),
                             TextWidget(text: 'IU/L')
@@ -163,19 +104,19 @@ class ResultsPage extends StatelessWidget {
                           height: 30,
                         ),
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
+                          mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            TextWidget(text: 'Alamine_aminotransferase'),
+                            TextWidget(text: 'Alanine\naminotransferase'),
                             const SizedBox(
-                              width: 45,
+                              width: 110,
                             ),
                             SizedBox(
                               width: 100,
                               height: 30,
                               child: GeneralTextFormFieldWidget(
-                                  validation: resultsControl.validateAlaine,
+                                  validation: resultsControl.validateAlkalinep,
                                   text: TextWidget(text: ''),
-                                  controller: resultsControl.t6Control,
+                                  controller: resultsControl.t5Control,
                                   hint: '4-36'),
                             ),
                             TextWidget(text: 'U/L')
@@ -185,11 +126,11 @@ class ResultsPage extends StatelessWidget {
                           height: 30,
                         ),
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
+                          mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            TextWidget(text: 'Aspartate-aminotransferase'),
+                            TextWidget(text: 'Aspartate\naminotransferase'),
                             const SizedBox(
-                              width: 37,
+                              width: 110,
                             ),
                             SizedBox(
                               width: 100,
@@ -203,37 +144,35 @@ class ResultsPage extends StatelessWidget {
                             TextWidget(text: 'U/L')
                           ],
                         ),
-                        const SizedBox(
-                          height: 30,
-                        ),
+                        const SizedBox(height: 30),
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
+                          mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            TextWidget(text: 'Total_proteins'),
+                            TextWidget(text: ' Bilirubin'),
                             const SizedBox(
-                              width: 137,
+                              width: 152,
                             ),
                             SizedBox(
                               width: 100,
                               height: 30,
                               child: GeneralTextFormFieldWidget(
-                                  validation: resultsControl.validateTProteins,
+                                  validation: resultsControl.validateAlaine,
                                   text: TextWidget(text: ''),
-                                  controller: resultsControl.t8Control,
-                                  hint: ''),
+                                  controller: resultsControl.t6Control,
+                                  hint: ' 1.2'),
                             ),
-                            TextWidget(text: 'U/L')
+                            TextWidget(text: 'mg/dL')
                           ],
                         ),
                         const SizedBox(
                           height: 30,
                         ),
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
+                          mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            TextWidget(text: 'Albumin'),
+                            TextWidget(text: 'Cholinesterase'),
                             const SizedBox(
-                              width: 170,
+                              width: 120,
                             ),
                             SizedBox(
                               width: 100,
@@ -242,20 +181,20 @@ class ResultsPage extends StatelessWidget {
                                   validation: resultsControl.validateAlbumin,
                                   text: TextWidget(text: ''),
                                   controller: resultsControl.t9Control,
-                                  hint: '3.4-5.4'),
+                                  hint: ''),
                             ),
-                            TextWidget(text: 'g/dL')
+                            TextWidget(text: 'units')
                           ],
                         ),
                         const SizedBox(
                           height: 30,
                         ),
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
+                          mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            TextWidget(text: 'Albumin_to_globulin_ratio'),
+                            TextWidget(text: 'Cholesterol'),
                             const SizedBox(
-                              width: 37,
+                              width: 145,
                             ),
                             SizedBox(
                               width: 100,
@@ -264,13 +203,55 @@ class ResultsPage extends StatelessWidget {
                                   validation: resultsControl.validateAGRatio,
                                   text: TextWidget(text: ''),
                                   controller: resultsControl.t10Control,
-                                  hint: '00'),
+                                  hint: ''),
+                            ),
+                            TextWidget(text: 'units')
+                          ],
+                        ),
+                        const SizedBox(height: 30),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            TextWidget(text: 'Gamma-Glutamyl\nTransferase'),
+                            const SizedBox(
+                              width: 100,
+                            ),
+                            SizedBox(
+                              width: 100,
+                              height: 30,
+                              child: GeneralTextFormFieldWidget(
+                                  validation: resultsControl.validateAGRatio,
+                                  text: TextWidget(text: ''),
+                                  controller: resultsControl.t10Control,
+                                  hint: ''),
                             ),
                             TextWidget(text: 'units')
                           ],
                         ),
                       ],
                     ))),
+                const SizedBox(
+                  height: 30,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    TextWidget(text: 'Proteins'),
+                    const SizedBox(
+                      width: 180,
+                    ),
+                    SizedBox(
+                      width: 100,
+                      height: 30,
+                      child: GeneralTextFormFieldWidget(
+                          validation: resultsControl.validateTProteins,
+                          text: TextWidget(text: ''),
+                          controller: resultsControl.t8Control,
+                          hint: ''),
+                    ),
+                    TextWidget(text: 'U/L')
+                  ],
+                ),
                 const SizedBox(
                   height: 30,
                 ),
@@ -299,6 +280,7 @@ class ResultsPage extends StatelessWidget {
                                   TextButton(
                                     onPressed: () {
                                       Navigator.of(context).pop();
+                                      Get.to(() => const PatientReportView());
                                     },
                                     child: TextWidget(
                                       text: 'Analyse result',
