@@ -86,7 +86,7 @@ class AuthController extends GetxController {
     DatabaseReference patientRef =
         FirebaseDatabase.instance.ref().child('patients');
     patientRef.once().then((snap) {
-      print(snap.snapshot.value);
+      Get.snackbar('', 'the data ${snap.snapshot.value}');
     });
   }
 }

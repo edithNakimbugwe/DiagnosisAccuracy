@@ -1,4 +1,3 @@
-import 'package:diagnosis_accuracy/controllers/dropdown_controller.dart';
 import 'package:diagnosis_accuracy/controllers/results_controllers.dart';
 import 'package:diagnosis_accuracy/views/patient_report.dart';
 import 'package:diagnosis_accuracy/widgets/text_form_field.dart';
@@ -12,8 +11,6 @@ class ResultsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final resultsControl = Get.put(ResultsControllers());
-    final DropdownController dropdownController = Get.put(DropdownController());
-    final List<String> dropdownItems = ['F', 'M'];
 
     return SafeArea(
       child: Scaffold(

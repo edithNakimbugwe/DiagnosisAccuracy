@@ -1,15 +1,15 @@
 import 'package:diagnosis_accuracy/controllers/logout_controllers.dart';
 import 'package:diagnosis_accuracy/controllers/patient_data_controllers.dart';
 import 'package:diagnosis_accuracy/services/firebase_services.dart';
+import 'package:diagnosis_accuracy/views/lab_results_view.dart';
 import 'package:diagnosis_accuracy/views/my_drawer%20_views/contact_us_page.dart';
 import 'package:diagnosis_accuracy/views/my_drawer%20_views/settings.dart';
+import 'package:diagnosis_accuracy/views/predicton_trial.dart';
 import 'package:diagnosis_accuracy/widgets/text_form_field.dart';
 import 'package:diagnosis_accuracy/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-
-import 'lab_results_view.dart';
 
 Future<String> loadAboutUsTextFile() async {
   return await rootBundle.loadString('assets/docs/about_us.html');
