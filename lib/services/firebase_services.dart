@@ -10,6 +10,8 @@ class AuthController extends GetxController {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   late Rx<User?> _firebaseUser;
 
+  final patientData = ''.obs;
+
   @override
   void onReady() {
     super.onReady();
@@ -86,7 +88,7 @@ class AuthController extends GetxController {
     DatabaseReference patientRef =
         FirebaseDatabase.instance.ref().child('patients');
     patientRef.once().then((snap) {
-      Get.snackbar('', 'the data ${snap.snapshot.value}');
+      patientData.value = snap.snapshot.value.toString();
     });
   }
 }

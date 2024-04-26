@@ -1,4 +1,5 @@
 import 'package:diagnosis_accuracy/controllers/results_controllers.dart';
+import 'package:diagnosis_accuracy/services/firebase_services.dart';
 import 'package:diagnosis_accuracy/views/patient_report.dart';
 import 'package:diagnosis_accuracy/widgets/text_form_field.dart';
 import 'package:diagnosis_accuracy/widgets/text_widget.dart';
@@ -11,6 +12,7 @@ class ResultsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final resultsControl = Get.put(ResultsControllers());
+    final authControl = Get.put(AuthController());
 
     return SafeArea(
       child: Scaffold(
@@ -276,6 +278,7 @@ class ResultsPage extends StatelessWidget {
                                 children: [
                                   TextButton(
                                     onPressed: () {
+                                      authControl.retrieveSomeData();
                                       Navigator.of(context).pop();
                                       Get.to(() => const PatientReportView());
                                     },
