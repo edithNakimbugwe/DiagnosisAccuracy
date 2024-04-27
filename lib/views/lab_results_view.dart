@@ -26,7 +26,7 @@ class ResultsPage extends StatelessWidget {
               ),
             )),
         body: Padding(
-          padding: const EdgeInsets.fromLTRB(20, 30, 20, 0),
+          padding: const EdgeInsets.fromLTRB(20, 40, 20, 0),
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -262,6 +262,18 @@ class ResultsPage extends StatelessWidget {
                     onPressed: () {
                       if (resultsControl.resultsFormKey.currentState!
                           .validate()) {
+                        AuthController.instance.addLabResultsData(
+                          age: resultsControl.t1Control.text.trim(),
+                          alb: resultsControl.t2Control.text.trim(),
+                          alp: resultsControl.t3Control.text.trim(),
+                          alt: resultsControl.t4Control.text.trim(),
+                          ast: resultsControl.t5Control.text.trim(),
+                          bil: resultsControl.t6Control.text.trim(),
+                          che: resultsControl.t7Control.text.trim(),
+                          chol: resultsControl.t8Control.text.trim(),
+                          ggt: resultsControl.t9Control.text.trim(),
+                          prot: resultsControl.t10Control.text.trim(),
+                        );
                         showDialog(
                           context: context,
                           builder: (BuildContext context) {
@@ -281,6 +293,7 @@ class ResultsPage extends StatelessWidget {
                                     TextButton(
                                       onPressed: () {
                                         authControl.retrievePatientData();
+                                        authControl.retrieveLabResultsData();
                                         Navigator.of(context).pop();
                                         Get.to(() => const PatientReportView());
                                       },

@@ -9,95 +9,211 @@ class PatientReportView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final authControl = Get.put(AuthController());
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.lightGreen,
-        elevation: 0,
-        title: Center(
-          child: TextWidget(
-            text: 'REPORT',
-            isHeading: true,
+
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.lightGreen,
+          elevation: 0,
+          title: Center(
+            child: TextWidget(
+              text: 'REPORT',
+              isHeading: true,
+            ),
           ),
         ),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.fromLTRB(30, 50, 30, 0),
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Center(
-                child: GetBuilder<AuthController>(
-                  builder: (_) => Obx(() {
-                    final patientData = authControl.patientData.value;
-
-                    final dataWithoutBraces =
-                        patientData.trim().replaceAll(RegExp(r'^\{|\}$'), '');
-
-                    final dataPoints = dataWithoutBraces.split(',');
-
-                    return ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: dataPoints.length,
-                      itemBuilder: (context, index) {
-                        final dataPoint = dataPoints[index];
-
-                        final formattedDataPoint = dataPoint;
-
-                        return Row(
-                          children: [
-                            SingleChildScrollView(
-                              child: Text(
-                                formattedDataPoint,
-                                style: const TextStyle(
-                                  wordSpacing: 40,
-                                  letterSpacing: 1.5,
-                                ),
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 40,
-                            ),
-                          ],
-                        );
-                      },
-                    );
-                  }),
-                ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+        body: Padding(
+          padding: const EdgeInsets.fromLTRB(30, 20, 30, 10),
+          child: Center(
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.lightGreen,
-                    ),
-                    onPressed: () {},
-                    child: TextWidget(
-                      text: 'Save',
-                      isHeading: true,
+                  TextWidget(
+                    text: 'Patient Data',
+                    isHeading: true,
+                  ),
+                  Center(
+                    child: GetBuilder<AuthController>(
+                      builder: (_) => Obx(() {
+                        final patientData = authControl.patientData.value;
+
+                        final dataWithoutBraces = patientData
+                            .trim()
+                            .replaceAll(RegExp(r'^\{|\}$'), '');
+
+                        final dataPoints = dataWithoutBraces.split(',');
+
+                        return ListView.builder(
+                          shrinkWrap: true,
+                          itemCount: dataPoints.length,
+                          itemBuilder: (context, index) {
+                            final dataPoint = dataPoints[index];
+
+                            final formattedDataPoint = dataPoint;
+
+                            return Row(
+                              children: [
+                                Text(
+                                  formattedDataPoint,
+                                  style: const TextStyle(
+                                    wordSpacing: 40,
+                                    letterSpacing: 1.5,
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 40,
+                                ),
+                              ],
+                            );
+                          },
+                        );
+                      }),
                     ),
                   ),
-                  const SizedBox(
-                    width: 30,
+                  TextWidget(
+                    text: 'Scores',
+                    isHeading: true,
                   ),
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.lightGreen,
+                  Center(
+                    child: GetBuilder<AuthController>(
+                      builder: (_) => Obx(() {
+                        final labResultsData =
+                            authControl.labResultsData.value; // Get data
+
+                        final dataWithoutBraces = labResultsData
+                            .trim()
+                            .replaceAll(RegExp(r'^\{|\}$'), '');
+
+                        final dataPoints = dataWithoutBraces.split(',');
+
+                        return ListView.builder(
+                            shrinkWrap: true,
+                            itemCount: dataPoints.length,
+                            itemBuilder: (context, index) {
+                              final dataPoint = dataPoints[index];
+
+                              final formattedLabDataPoint = dataPoint;
+
+                              return Row(
+                                children: [
+                                  Text(
+                                    formattedLabDataPoint,
+                                    style: const TextStyle(
+                                      wordSpacing: 35,
+                                      letterSpacing: 1.5,
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    height: 40,
+                                  ),
+                                ],
+                              );
+                            });
+                      }),
                     ),
-                    onPressed: () {},
-                    child: TextWidget(
-                      text: 'Print',
-                      isHeading: true,
-                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.lightGreen,
+                        ),
+                        onPressed: () {
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return AlertDialog(
+                                backgroundColor: Colors.amber[50],
+                                title: TextWidget(
+                                  text: '',
+                                  isHeading: true,
+                                  colors: Colors.lightGreen,
+                                ),
+                                content: TextWidget(text: 'Successfully Saved'),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                    child: TextWidget(
+                                      text: 'OK',
+                                    ),
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                        },
+                        child: TextWidget(
+                          text: 'Save',
+                          isHeading: true,
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 30,
+                      ),
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.lightGreen,
+                        ),
+                        onPressed: () {
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return AlertDialog(
+                                backgroundColor: Colors.amber[50],
+                                title: TextWidget(
+                                  text: '',
+                                  isHeading: true,
+                                  colors: Colors.lightGreen,
+                                ),
+                                content: TextWidget(
+                                    text:
+                                        'Ensure that you\'re connected to a printer'),
+                                actions: [
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.of(context).pop();
+                                        },
+                                        child: TextWidget(
+                                          text: 'connect',
+                                        ),
+                                      ),
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.of(context).pop();
+                                        },
+                                        child: TextWidget(
+                                          text: 'OK',
+                                        ),
+                                      ),
+                                    ],
+                                  )
+                                ],
+                              );
+                            },
+                          );
+                        },
+                        child: TextWidget(
+                          text: 'Print',
+                          isHeading: true,
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
-            ],
+            ),
           ),
         ),
+        backgroundColor: Colors.amber[50],
       ),
-      backgroundColor: Colors.amber[50],
     );
   }
 }

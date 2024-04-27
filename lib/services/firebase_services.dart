@@ -11,6 +11,7 @@ class AuthController extends GetxController {
   late Rx<User?> _firebaseUser;
 
   final patientData = ''.obs;
+  final labResultsData = ''.obs;
 
   @override
   void onReady() {
@@ -111,12 +112,12 @@ class AuthController extends GetxController {
         'Age': age,
         'Albumin': alb,
         'ALkaline_Phosphate': alp,
-        'Alanine\nAminotransferase': alt,
-        'Aspartate\nAminotransferase': ast,
+        'Alanine_Aminotransferase': alt,
+        'Aspartate_Aminotransferase': ast,
         'Bilirubin': bil,
         'Cholinesterase': che,
         'Cholesterol': chol,
-        'Gamma-Glutamyl\nTransferase': ggt,
+        'Gamma_Glutamyl_Transferase': ggt,
         'Total_Protein': prot
       };
 
@@ -124,5 +125,13 @@ class AuthController extends GetxController {
     } catch (e) {
       Get.snackbar('error', e.toString());
     }
+  }
+
+  void retrieveLabResultsData() {
+    DatabaseReference labResultsRef =
+        FirebaseDatabase.instance.ref().child('lab_results');
+    labResultsRef.once().then((snap) {
+      labResultsData.value = snap.snapshot.value.toString();
+    });
   }
 }
