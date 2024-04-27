@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'services/firebase_services.dart';
+import 'views/home_view.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,7 +28,7 @@ class HepaCheckApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      home: const OnBoardingView(),
+      home: HomePage(),
       initialBinding: MyBindings(),
       debugShowCheckedModeBanner: false,
     );

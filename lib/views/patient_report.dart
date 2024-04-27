@@ -100,7 +100,7 @@ class PatientReportView extends StatelessWidget {
                                   Text(
                                     formattedLabDataPoint,
                                     style: const TextStyle(
-                                      wordSpacing: 35,
+                                      wordSpacing: 40,
                                       letterSpacing: 1.5,
                                     ),
                                   ),
