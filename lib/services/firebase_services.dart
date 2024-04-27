@@ -18,7 +18,7 @@ class AuthController extends GetxController {
     _firebaseUser = Rx<User?>(_auth.currentUser);
     _firebaseUser.bindStream(_auth.authStateChanges());
     ever(_firebaseUser, pager);
-    retrieveSomeData();
+    retrievePatientData();
   }
 
   void pager(User? user) {
@@ -72,10 +72,10 @@ class AuthController extends GetxController {
       Map data = {
         'patientID': patientID,
         'patientName': patientName,
-        'patientPhoneNo': phoneNumber,
-        'patientAddress': address,
-        'patientCurrentMedication': currentMedication,
-        'patientAllergies': allergies,
+        'PhoneNo_': phoneNumber,
+        'Address': address,
+        'CurrentMedication': currentMedication,
+        'Allergies': allergies,
       };
 
       await patientRef.set(data);
@@ -84,11 +84,45 @@ class AuthController extends GetxController {
     }
   }
 
-  void retrieveSomeData() {
+  void retrievePatientData() {
     DatabaseReference patientRef =
         FirebaseDatabase.instance.ref().child('patients');
     patientRef.once().then((snap) {
       patientData.value = snap.snapshot.value.toString();
     });
+  }
+
+  void addLabResultsData(
+      {required String age,
+      required String alb,
+      required String alp,
+      required String alt,
+      required String ast,
+      required String bil,
+      required String che,
+      required String chol,
+      required String ggt,
+      required String prot}) async {
+    try {
+      DatabaseReference patientRef =
+          FirebaseDatabase.instance.ref().child('lab_results');
+
+      Map data = {
+        'Age': age,
+        'Albumin': alb,
+        'ALkaline_Phosphate': alp,
+        'Alanine\nAminotransferase': alt,
+        'Aspartate\nAminotransferase': ast,
+        'Bilirubin': bil,
+        'Cholinesterase': che,
+        'Cholesterol': chol,
+        'Gamma-Glutamyl\nTransferase': ggt,
+        'Total_Protein': prot
+      };
+
+      await patientRef.set(data);
+    } catch (e) {
+      Get.snackbar('error', e.toString());
+    }
   }
 }

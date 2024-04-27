@@ -15,72 +15,72 @@ class ResultsControllers extends GetxController {
 
   final GlobalKey<FormState> resultsFormKey = GlobalKey<FormState>();
 
-  String? validateAge(int? age) {
-    if (age == null) {
-      return 'Patients age required';
+  String? validateAge(String? age) {
+    if (age == '' || age == null) {
+      return 'value required';
     }
     return null;
   }
 
-  String? validateGender(int? gender) {
-    if (gender == null) {
-      return 'Patient\'s sex required';
+  String? validateAlb(String? alb) {
+    if (alb == '' || alb == null) {
+      return 'value required';
     }
     return null;
   }
 
-  String? validateTBilirubin(int? tBilirubin) {
-    if (tBilirubin == null) {
-      return 'Total bilirubin score required';
+  String? validateAlp(String? alp) {
+    if (alp == '' || alp == null) {
+      return 'value required';
     }
     return null;
   }
 
-  String? validateDBilrubin(int? dBilirubin) {
-    if (dBilirubin == null) {
-      return 'Direct bilirubin score required';
+  String? validateAlt(String? alt) {
+    if (alt == '' || alt == null) {
+      return 'value required';
     }
     return null;
   }
 
-  String? validateAlkalinep(int? ap) {
-    if (ap == null) {
-      return 'Patient\'s Alkaline-phosphate score is required';
+  String? validateAst(String? ast) {
+    if (ast == '' || ast == null) {
+      return 'value required';
     }
     return null;
   }
 
-  String? validateAlaine(int? alamine) {
-    if (alamine == null) {
-      return 'Patient\'s Alamine-aminotransferase score required';
+  String? validateBil(String? bil) {
+    if (bil == '' || bil == null) {
+      return 'value required';
     }
     return null;
   }
 
-  String? validateAspartate(int? aspartate) {
-    if (aspartate == null) {
-      return 'Patient\'s Aspartate-aminosferase score required';
+  String? validateChe(String? che) {
+    if (che == '' || che == null) {
+      return 'value required';
     }
     return null;
   }
 
-  String? validateTProteins(int? proteins) {
-    if (proteins == null) {
-      return 'Patient\'s Total protein score required';
+  String? validateCho(String? cho) {
+    if (cho == '' || cho == null) {
+      return 'value required';
     }
     return null;
   }
 
-  String? validateAlbumin(int? albumin) {
-    if (albumin == null) {
-      return 'Patient\'s albuin score required';
+  String? validateProteins(String? prot) {
+    if (prot == '' || prot == null) {
+      return 'value required';
     }
     return null;
   }
 
-  String? validateAGRatio(int? ag) {
-    if (ag == null) {
-      return 'Patient\'s Albumin-to-Globulin ratio score required';
+  String? validateGgt(String? ggt) {
+    if (ggt == '' || ggt == null) {
+      return 'value required';
     }
     return null;
   }

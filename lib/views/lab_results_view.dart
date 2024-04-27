@@ -26,7 +26,7 @@ class ResultsPage extends StatelessWidget {
               ),
             )),
         body: Padding(
-          padding: const EdgeInsets.all(20),
+          padding: const EdgeInsets.fromLTRB(20, 30, 20, 0),
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -45,7 +45,7 @@ class ResultsPage extends StatelessWidget {
                             ),
                             SizedBox(
                               width: 100,
-                              height: 30,
+                              height: 50,
                               child: GeneralTextFormFieldWidget(
                                   validation: resultsControl.validateAge,
                                   text: TextWidget(text: ''),
@@ -67,11 +67,11 @@ class ResultsPage extends StatelessWidget {
                             ),
                             SizedBox(
                               width: 100,
-                              height: 30,
+                              height: 50,
                               child: GeneralTextFormFieldWidget(
-                                  validation: resultsControl.validateTBilirubin,
+                                  validation: resultsControl.validateAlb,
                                   text: TextWidget(text: ''),
-                                  controller: resultsControl.t3Control,
+                                  controller: resultsControl.t2Control,
                                   hint: '3.4-5.4'),
                             ),
                             TextWidget(text: 'g/dL')
@@ -89,11 +89,11 @@ class ResultsPage extends StatelessWidget {
                             ),
                             SizedBox(
                               width: 100,
-                              height: 30,
+                              height: 50,
                               child: GeneralTextFormFieldWidget(
-                                  validation: resultsControl.validateDBilrubin,
+                                  validation: resultsControl.validateAlp,
                                   text: TextWidget(text: ''),
-                                  controller: resultsControl.t4Control,
+                                  controller: resultsControl.t3Control,
                                   hint: '44-147'),
                             ),
                             TextWidget(text: 'IU/L')
@@ -111,11 +111,11 @@ class ResultsPage extends StatelessWidget {
                             ),
                             SizedBox(
                               width: 100,
-                              height: 30,
+                              height: 50,
                               child: GeneralTextFormFieldWidget(
-                                  validation: resultsControl.validateAlkalinep,
+                                  validation: resultsControl.validateAlt,
                                   text: TextWidget(text: ''),
-                                  controller: resultsControl.t5Control,
+                                  controller: resultsControl.t4Control,
                                   hint: '4-36'),
                             ),
                             TextWidget(text: 'U/L')
@@ -133,11 +133,11 @@ class ResultsPage extends StatelessWidget {
                             ),
                             SizedBox(
                               width: 100,
-                              height: 30,
+                              height: 50,
                               child: GeneralTextFormFieldWidget(
-                                  validation: resultsControl.validateAspartate,
+                                  validation: resultsControl.validateAst,
                                   text: TextWidget(text: ''),
-                                  controller: resultsControl.t7Control,
+                                  controller: resultsControl.t5Control,
                                   hint: '8-33'),
                             ),
                             TextWidget(text: 'U/L')
@@ -153,9 +153,9 @@ class ResultsPage extends StatelessWidget {
                             ),
                             SizedBox(
                               width: 100,
-                              height: 30,
+                              height: 50,
                               child: GeneralTextFormFieldWidget(
-                                  validation: resultsControl.validateAlaine,
+                                  validation: resultsControl.validateBil,
                                   text: TextWidget(text: ''),
                                   controller: resultsControl.t6Control,
                                   hint: ' 1.2'),
@@ -175,11 +175,11 @@ class ResultsPage extends StatelessWidget {
                             ),
                             SizedBox(
                               width: 100,
-                              height: 30,
+                              height: 50,
                               child: GeneralTextFormFieldWidget(
-                                  validation: resultsControl.validateAlbumin,
+                                  validation: resultsControl.validateChe,
                                   text: TextWidget(text: ''),
-                                  controller: resultsControl.t9Control,
+                                  controller: resultsControl.t7Control,
                                   hint: ''),
                             ),
                             TextWidget(text: 'units')
@@ -197,11 +197,11 @@ class ResultsPage extends StatelessWidget {
                             ),
                             SizedBox(
                               width: 100,
-                              height: 30,
+                              height: 50,
                               child: GeneralTextFormFieldWidget(
-                                  validation: resultsControl.validateAGRatio,
+                                  validation: resultsControl.validateCho,
                                   text: TextWidget(text: ''),
-                                  controller: resultsControl.t10Control,
+                                  controller: resultsControl.t8Control,
                                   hint: ''),
                             ),
                             TextWidget(text: 'units')
@@ -217,40 +217,40 @@ class ResultsPage extends StatelessWidget {
                             ),
                             SizedBox(
                               width: 100,
-                              height: 30,
+                              height: 50,
                               child: GeneralTextFormFieldWidget(
-                                  validation: resultsControl.validateAGRatio,
+                                  validation: resultsControl.validateGgt,
                                   text: TextWidget(text: ''),
-                                  controller: resultsControl.t10Control,
+                                  controller: resultsControl.t9Control,
                                   hint: ''),
                             ),
                             TextWidget(text: 'units')
                           ],
                         ),
+                        const SizedBox(
+                          height: 30,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            TextWidget(text: 'Total Proteins'),
+                            const SizedBox(
+                              width: 130,
+                            ),
+                            SizedBox(
+                              width: 100,
+                              height: 50,
+                              child: GeneralTextFormFieldWidget(
+                                  validation: resultsControl.validateProteins,
+                                  text: TextWidget(text: ''),
+                                  controller: resultsControl.t10Control,
+                                  hint: ''),
+                            ),
+                            TextWidget(text: 'U/L')
+                          ],
+                        ),
                       ],
                     ))),
-                const SizedBox(
-                  height: 30,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    TextWidget(text: 'Proteins'),
-                    const SizedBox(
-                      width: 180,
-                    ),
-                    SizedBox(
-                      width: 100,
-                      height: 30,
-                      child: GeneralTextFormFieldWidget(
-                          validation: resultsControl.validateTProteins,
-                          text: TextWidget(text: ''),
-                          controller: resultsControl.t8Control,
-                          hint: ''),
-                    ),
-                    TextWidget(text: 'U/L')
-                  ],
-                ),
                 const SizedBox(
                   height: 30,
                 ),
@@ -260,46 +260,49 @@ class ResultsPage extends StatelessWidget {
                       backgroundColor: Colors.lightGreen,
                     ),
                     onPressed: () {
-                      showDialog(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return AlertDialog(
-                            backgroundColor: Colors.amber[50],
-                            title: TextWidget(
-                              text: 'Diagnostic Outcome',
-                              isHeading: true,
-                              colors: Colors.lightGreen,
-                            ),
-                            content: TextWidget(text: 'Super Healthy Liver!'),
-                            actions: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  TextButton(
-                                    onPressed: () {
-                                      authControl.retrieveSomeData();
-                                      Navigator.of(context).pop();
-                                      Get.to(() => const PatientReportView());
-                                    },
-                                    child: TextWidget(
-                                      text: 'Analyse result',
-                                    ),
-                                  ),
-                                  TextButton(
-                                    onPressed: () {
-                                      Navigator.of(context).pop();
-                                    },
-                                    child: TextWidget(
-                                      text: 'Close',
-                                    ),
-                                  ),
-                                ],
+                      if (resultsControl.resultsFormKey.currentState!
+                          .validate()) {
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              backgroundColor: Colors.amber[50],
+                              title: TextWidget(
+                                text: 'Diagnostic Outcome',
+                                isHeading: true,
+                                colors: Colors.lightGreen,
                               ),
-                            ],
-                          );
-                        },
-                      );
+                              content: TextWidget(text: 'Super Healthy Liver!'),
+                              actions: [
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    TextButton(
+                                      onPressed: () {
+                                        authControl.retrievePatientData();
+                                        Navigator.of(context).pop();
+                                        Get.to(() => const PatientReportView());
+                                      },
+                                      child: TextWidget(
+                                        text: 'Analyse result',
+                                      ),
+                                    ),
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                      child: TextWidget(
+                                        text: 'Close',
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            );
+                          },
+                        );
+                      }
                     },
                     child: TextWidget(text: 'SUBMIT'),
                   ),

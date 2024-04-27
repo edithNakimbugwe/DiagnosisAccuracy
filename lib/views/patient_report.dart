@@ -11,13 +11,15 @@ class PatientReportView extends StatelessWidget {
     final authControl = Get.put(AuthController());
     return Scaffold(
       appBar: AppBar(
-          backgroundColor: Colors.lightGreen,
-          elevation: 0,
-          title: Center(
-              child: TextWidget(
+        backgroundColor: Colors.lightGreen,
+        elevation: 0,
+        title: Center(
+          child: TextWidget(
             text: 'REPORT',
             isHeading: true,
-          ))),
+          ),
+        ),
+      ),
       body: Padding(
         padding: const EdgeInsets.fromLTRB(30, 50, 30, 0),
         child: Center(
@@ -27,11 +29,38 @@ class PatientReportView extends StatelessWidget {
               Center(
                 child: GetBuilder<AuthController>(
                   builder: (_) => Obx(() {
-                    return Column(
-                      children:
-                          authControl.patientData.value.split('\n').map((line) {
-                        return Text(line);
-                      }).toList(growable: true),
+                    final patientData = authControl.patientData.value;
+
+                    final dataWithoutBraces =
+                        patientData.trim().replaceAll(RegExp(r'^\{|\}$'), '');
+
+                    final dataPoints = dataWithoutBraces.split(',');
+
+                    return ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: dataPoints.length,
+                      itemBuilder: (context, index) {
+                        final dataPoint = dataPoints[index];
+
+                        final formattedDataPoint = dataPoint;
+
+                        return Row(
+                          children: [
+                            SingleChildScrollView(
+                              child: Text(
+                                formattedDataPoint,
+                                style: const TextStyle(
+                                  wordSpacing: 40,
+                                  letterSpacing: 1.5,
+                                ),
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 40,
+                            ),
+                          ],
+                        );
+                      },
                     );
                   }),
                 ),
@@ -40,26 +69,30 @@ class PatientReportView extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.lightGreen),
-                      onPressed: () {},
-                      child: TextWidget(
-                        text: 'Save',
-                        isHeading: true,
-                      )),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.lightGreen,
+                    ),
+                    onPressed: () {},
+                    child: TextWidget(
+                      text: 'Save',
+                      isHeading: true,
+                    ),
+                  ),
                   const SizedBox(
                     width: 30,
                   ),
                   ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.lightGreen),
-                      onPressed: () {},
-                      child: TextWidget(
-                        text: 'Print',
-                        isHeading: true,
-                      ))
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.lightGreen,
+                    ),
+                    onPressed: () {},
+                    child: TextWidget(
+                      text: 'Print',
+                      isHeading: true,
+                    ),
+                  ),
                 ],
-              )
+              ),
             ],
           ),
         ),

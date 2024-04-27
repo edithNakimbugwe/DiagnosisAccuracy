@@ -118,7 +118,7 @@ class PredictionPage extends StatelessWidget {
                             width: 100,
                             height: 30,
                             child: GeneralTextFormFieldWidget(
-                                validation: resultsControl.validateTBilirubin,
+                                validation: resultsControl.validateAlb,
                                 text: TextWidget(text: ''),
                                 controller: resultsControl.t3Control,
                                 hint: '3.4-5.4'),
@@ -140,7 +140,7 @@ class PredictionPage extends StatelessWidget {
                             width: 100,
                             height: 30,
                             child: GeneralTextFormFieldWidget(
-                                validation: resultsControl.validateDBilrubin,
+                                validation: resultsControl.validateAlp,
                                 text: TextWidget(text: ''),
                                 controller: resultsControl.t4Control,
                                 hint: '44-147'),
@@ -162,7 +162,7 @@ class PredictionPage extends StatelessWidget {
                             width: 100,
                             height: 30,
                             child: GeneralTextFormFieldWidget(
-                                validation: resultsControl.validateAlkalinep,
+                                validation: resultsControl.validateAlt,
                                 text: TextWidget(text: ''),
                                 controller: resultsControl.t5Control,
                                 hint: '4-36'),
@@ -184,7 +184,7 @@ class PredictionPage extends StatelessWidget {
                             width: 100,
                             height: 30,
                             child: GeneralTextFormFieldWidget(
-                                validation: resultsControl.validateAspartate,
+                                validation: resultsControl.validateAst,
                                 text: TextWidget(text: ''),
                                 controller: resultsControl.t7Control,
                                 hint: '8-33'),
@@ -204,7 +204,7 @@ class PredictionPage extends StatelessWidget {
                             width: 100,
                             height: 30,
                             child: GeneralTextFormFieldWidget(
-                                validation: resultsControl.validateAlaine,
+                                validation: resultsControl.validateBil,
                                 text: TextWidget(text: ''),
                                 controller: resultsControl.t6Control,
                                 hint: ' 1.2'),
@@ -226,7 +226,7 @@ class PredictionPage extends StatelessWidget {
                             width: 100,
                             height: 30,
                             child: GeneralTextFormFieldWidget(
-                                validation: resultsControl.validateAlbumin,
+                                validation: resultsControl.validateChe,
                                 text: TextWidget(text: ''),
                                 controller: resultsControl.t9Control,
                                 hint: ''),
@@ -248,7 +248,7 @@ class PredictionPage extends StatelessWidget {
                             width: 100,
                             height: 30,
                             child: GeneralTextFormFieldWidget(
-                                validation: resultsControl.validateAGRatio,
+                                validation: resultsControl.validateCho,
                                 text: TextWidget(text: ''),
                                 controller: resultsControl.t10Control,
                                 hint: ''),
@@ -268,7 +268,7 @@ class PredictionPage extends StatelessWidget {
                             width: 100,
                             height: 30,
                             child: GeneralTextFormFieldWidget(
-                                validation: resultsControl.validateAGRatio,
+                                validation: resultsControl.validateGgt,
                                 text: TextWidget(text: ''),
                                 controller: resultsControl.t10Control,
                                 hint: ''),
@@ -292,7 +292,7 @@ class PredictionPage extends StatelessWidget {
                     width: 100,
                     height: 30,
                     child: GeneralTextFormFieldWidget(
-                        validation: resultsControl.validateTProteins,
+                        validation: resultsControl.validateProteins,
                         text: TextWidget(text: ''),
                         controller: resultsControl.t8Control,
                         hint: ''),
