@@ -3,6 +3,7 @@ import 'package:diagnosis_accuracy/views/landing_view.dart';
 import 'package:diagnosis_accuracy/widgets/custom_password_field_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../widgets/checkbox_widget.dart';
 import '../widgets/text_form_field.dart';
 import '../widgets/text_widget.dart';
 
@@ -71,8 +72,8 @@ class NewAccount extends StatelessWidget {
                             controller: signupController.p2Control,
                             hintText: "*********",
                             userFunction: () =>
-                                signupController.toggleVisibility(),
-                            isVisible: signupController.isVisible.value,
+                                signupController.toggleVisibility2(),
+                            isVisible: signupController.isSeen.value,
                             text: TextWidget(text: "Comfirm Password"),
                             validate: signupController.validatePassword,
                           ),
@@ -95,38 +96,21 @@ class NewAccount extends StatelessWidget {
                       ],
                     ),
                   )),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  TextWidget(text: 'Email Updates'),
-                  const SizedBox(
-                    width: 100,
-                  ),
-                  IconButton(
-                    onPressed: () {},
-                    icon: const Icon(Icons.toggle_on),
-                    color: Colors.lightGreen,
-                  )
-                ],
+              const SizedBox(
+                height: 10,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
                 children: [
                   TextWidget(text: 'Agree to the terms and conditions'),
                   const SizedBox(
-                    width: 25,
+                    width: 40,
                   ),
-                  IconButton(
-                    onPressed: () {},
-                    icon: const Icon(Icons.toggle_off),
-                    color: Colors.lightGreen,
-                  ),
+                  CheckBoxWidget()
                 ],
               ),
               const SizedBox(
-                height: 5,
+                height: 10,
               ),
               TextWidget(
                   text:

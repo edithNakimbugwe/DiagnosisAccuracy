@@ -19,11 +19,18 @@ class SignUpControllers extends GetxController {
   final GlobalKey<FormState> signupformKey = GlobalKey<FormState>();
 
   var isVisible = false.obs;
+  var isSeen = true.obs;
 
   String? validateEmail(String? email) {
     if (email == '' || email == null) {
       return 'Email Address required';
     }
+    String pattern = r'\w+@\w+\.\w+';
+    RegExp reg = RegExp(pattern);
+    if (!reg.hasMatch(email)) {
+      return 'Invalid Email format';
+    }
+
     return null;
   }
 
@@ -71,6 +78,10 @@ class SignUpControllers extends GetxController {
 
   void toggleVisibility() {
     isVisible.value = !isVisible.value;
+  }
+
+  void toggleVisibility2() {
+    isSeen.value = !isSeen.value;
   }
 
   void registerUser() {

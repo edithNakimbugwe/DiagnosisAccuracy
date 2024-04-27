@@ -1,13 +1,13 @@
 import 'package:diagnosis_accuracy/bindings/my_bindings.dart';
 import 'package:diagnosis_accuracy/controllers/network_controllers.dart';
 import 'package:diagnosis_accuracy/firebase_options.dart';
-import 'package:diagnosis_accuracy/views/onboarding/onboarding_view.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'bindings/page_routing_binder.dart';
 import 'services/firebase_services.dart';
-import 'views/home_view.dart';
+import 'themes/theme.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,9 +28,12 @@ class HepaCheckApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      home: HomePage(),
       initialBinding: MyBindings(),
       debugShowCheckedModeBanner: false,
+      themeMode: ThemeMode.system,
+      theme: MyAppTheme.lightTheme,
+      darkTheme: MyAppTheme.darkTheme,
+      getPages: getpages,
     );
   }
 }

@@ -33,9 +33,7 @@ dependencies:
   connectivity_plus:
   lottie:
   multiselect:
-  pdf:
-  printing:
-  path_provider:
+  
   get:
   flutter:
     sdk: flutter
