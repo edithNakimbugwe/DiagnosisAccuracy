@@ -127,6 +127,11 @@ class ResultsControllers extends GetxController {
     if (ggt == '' || ggt == null) {
       return 'value required';
     }
+    String pattern = r'^\d+$';
+    RegExp reg = RegExp(pattern);
+    if (!reg.hasMatch(ggt)) {
+      return 'Insert Numeric!';
+    }
     return null;
   }
 }

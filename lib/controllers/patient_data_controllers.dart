@@ -25,10 +25,16 @@ class PatientDataController extends GetxController {
     return null;
   }
 
-  String? validatePatientTel(String? name) {
-    if (name == '' || name == null) {
+  String? validatePatientTel(String? number) {
+    if (number == '' || number == null) {
       return 'Enter Patient\' phone number';
     }
+    String pattern = r'^\d+$';
+    RegExp reg = RegExp(pattern);
+    if (!reg.hasMatch(number)) {
+      return 'Invalid phone number format';
+    }
+
     return null;
   }
 
