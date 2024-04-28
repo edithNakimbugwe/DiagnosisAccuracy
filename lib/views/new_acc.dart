@@ -1,3 +1,4 @@
+import 'package:diagnosis_accuracy/controllers/checkbox_controller.dart';
 import 'package:diagnosis_accuracy/controllers/signup_controllers.dart';
 import 'package:diagnosis_accuracy/views/landing_view.dart';
 import 'package:diagnosis_accuracy/widgets/custom_password_field_widget.dart';
@@ -13,6 +14,7 @@ class NewAccount extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final signupController = Get.put(SignUpControllers());
+    final checkBoxController = Get.put(CheckBoxController());
     return Scaffold(
       appBar: AppBar(
           backgroundColor: Colors.lightGreen,
@@ -93,6 +95,17 @@ class NewAccount extends StatelessWidget {
                             text: TextWidget(text: 'Specialty'),
                             controller: signupController.sControl,
                             hint: ' eg. Hepatologist'),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            TextWidget(
+                                text: 'Agree to the terms and conditions'),
+                            const SizedBox(
+                              width: 40,
+                            ),
+                            CheckBoxWidget()
+                          ],
+                        ),
                       ],
                     ),
                   )),
@@ -120,7 +133,8 @@ class NewAccount extends StatelessWidget {
               ),
               InkWell(
                 onTap: () {
-                  if (signupController.signupformKey.currentState!.validate()) {
+                  if (signupController.signupformKey.currentState!.validate() ||
+                      checkBoxController.isChecked.value) {
                     signupController.registerUser();
                   }
                 },

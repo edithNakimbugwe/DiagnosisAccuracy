@@ -76,6 +76,13 @@ class SignUpControllers extends GetxController {
     return null;
   }
 
+  String? validateCheckbox(bool? isChecked) {
+    if (isChecked == null || !isChecked) {
+      return 'Agree to terms and Connditions to proceed';
+    }
+    return null;
+  }
+
   void toggleVisibility() {
     isVisible.value = !isVisible.value;
   }
