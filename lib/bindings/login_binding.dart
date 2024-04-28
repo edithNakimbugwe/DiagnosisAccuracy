@@ -6,4 +6,6 @@ class LoginBinding implements Bindings {
   void dependencies() {
     Get.lazyPut<LoginControllers>(() => LoginControllers());
   }
+
+  //login
 }
