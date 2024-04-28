@@ -4,18 +4,21 @@ import 'package:diagnosis_accuracy/services/firebase_services.dart';
 import 'package:diagnosis_accuracy/views/lab_results_view.dart';
 import 'package:diagnosis_accuracy/views/my_drawer%20_views/contact_us_page.dart';
 import 'package:diagnosis_accuracy/views/my_drawer%20_views/settings.dart';
+import 'package:diagnosis_accuracy/views/saved_reports.dart';
 import 'package:diagnosis_accuracy/widgets/text_form_field.dart';
 import 'package:diagnosis_accuracy/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
+import 'predicton_trial.dart';
+
 Future<String> loadAboutUsTextFile() async {
   return await rootBundle.loadString('assets/docs/about_us.html');
 }
 
 Future<String> loadDisclaimerTextFile() async {
-  return await rootBundle.loadString('assets/docs/disclaimer.html');
+  return await rootBundle.loadString('assets/docs/disclaimer2.html');
 }
 
 Future<String> loadTermsAndConditionsTextFile() async {
@@ -179,21 +182,12 @@ class HomePage extends StatelessWidget {
           ),
           BottomNavigationBarItem(
               icon: IconButton(
-                  onPressed: () {
-                    showModalBottomSheet(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return Container(
-                          color: Colors.blueGrey,
-                          padding: const EdgeInsets.all(80),
-                          child:
-                              TextWidget(text: 'This is a modal bottom sheet'),
-                        );
-                      },
-                    );
-                  },
-                  icon: const Icon(Icons.more)),
-              label: 'More')
+                onPressed: () {
+                  Get.to(() => const SavedReportspage());
+                },
+                icon: const Icon(Icons.document_scanner),
+              ),
+              label: 'Reports')
         ],
         backgroundColor: Colors.lightGreen,
       ),

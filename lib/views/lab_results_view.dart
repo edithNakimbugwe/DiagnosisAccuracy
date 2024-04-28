@@ -118,7 +118,7 @@ class ResultsPage extends StatelessWidget {
                                   controller: resultsControl.t4Control,
                                   hint: '4-36'),
                             ),
-                            TextWidget(text: 'U/L')
+                            TextWidget(text: 'IU/L')
                           ],
                         ),
                         const SizedBox(
@@ -129,7 +129,7 @@ class ResultsPage extends StatelessWidget {
                           children: [
                             TextWidget(text: 'Aspartate\naminotransferase'),
                             const SizedBox(
-                              width: 110,
+                              width: 100,
                             ),
                             SizedBox(
                               width: 100,
@@ -140,7 +140,7 @@ class ResultsPage extends StatelessWidget {
                                   controller: resultsControl.t5Control,
                                   hint: '8-33'),
                             ),
-                            TextWidget(text: 'U/L')
+                            TextWidget(text: 'IU/L')
                           ],
                         ),
                         const SizedBox(height: 30),
@@ -182,7 +182,7 @@ class ResultsPage extends StatelessWidget {
                                   controller: resultsControl.t7Control,
                                   hint: ''),
                             ),
-                            TextWidget(text: 'units')
+                            TextWidget(text: 'IU/L')
                           ],
                         ),
                         const SizedBox(
@@ -193,7 +193,7 @@ class ResultsPage extends StatelessWidget {
                           children: [
                             TextWidget(text: 'Cholesterol'),
                             const SizedBox(
-                              width: 145,
+                              width: 140,
                             ),
                             SizedBox(
                               width: 100,
@@ -204,7 +204,7 @@ class ResultsPage extends StatelessWidget {
                                   controller: resultsControl.t8Control,
                                   hint: ''),
                             ),
-                            TextWidget(text: 'units')
+                            TextWidget(text: 'mg/dL')
                           ],
                         ),
                         const SizedBox(height: 30),
@@ -224,7 +224,7 @@ class ResultsPage extends StatelessWidget {
                                   controller: resultsControl.t9Control,
                                   hint: ''),
                             ),
-                            TextWidget(text: 'units')
+                            TextWidget(text: 'IU/L')
                           ],
                         ),
                         const SizedBox(
@@ -246,7 +246,7 @@ class ResultsPage extends StatelessWidget {
                                   controller: resultsControl.t10Control,
                                   hint: ''),
                             ),
-                            TextWidget(text: 'U/L')
+                            TextWidget(text: 'g/dL')
                           ],
                         ),
                       ],
@@ -284,7 +284,9 @@ class ResultsPage extends StatelessWidget {
                                 isHeading: true,
                                 colors: Colors.lightGreen,
                               ),
-                              content: TextWidget(text: 'Super Healthy Liver!'),
+                              content: TextWidget(
+                                  text:
+                                      'Model Prediction Result will be displayed here!'),
                               actions: [
                                 Row(
                                   mainAxisAlignment:

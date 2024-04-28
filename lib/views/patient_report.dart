@@ -78,8 +78,7 @@ class PatientReportView extends StatelessWidget {
                   Center(
                     child: GetBuilder<AuthController>(
                       builder: (_) => Obx(() {
-                        final labResultsData =
-                            authControl.labResultsData.value; // Get data
+                        final labResultsData = authControl.labResultsData.value;
 
                         final dataWithoutBraces = labResultsData
                             .trim()
@@ -127,11 +126,12 @@ class PatientReportView extends StatelessWidget {
                               return AlertDialog(
                                 backgroundColor: Colors.amber[50],
                                 title: TextWidget(
-                                  text: '',
+                                  text: 'Saved',
                                   isHeading: true,
                                   colors: Colors.lightGreen,
                                 ),
-                                content: TextWidget(text: 'Successfully Saved'),
+                                content: TextWidget(
+                                    text: 'Report Successfully Saved!'),
                                 actions: [
                                   TextButton(
                                     onPressed: () {
@@ -165,7 +165,7 @@ class PatientReportView extends StatelessWidget {
                               return AlertDialog(
                                 backgroundColor: Colors.amber[50],
                                 title: TextWidget(
-                                  text: '',
+                                  text: 'Print?',
                                   isHeading: true,
                                   colors: Colors.lightGreen,
                                 ),

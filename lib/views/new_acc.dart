@@ -95,17 +95,6 @@ class NewAccount extends StatelessWidget {
                             text: TextWidget(text: 'Specialty'),
                             controller: signupController.sControl,
                             hint: ' eg. Hepatologist'),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            TextWidget(
-                                text: 'Agree to the terms and conditions'),
-                            const SizedBox(
-                              width: 40,
-                            ),
-                            CheckBoxWidget()
-                          ],
-                        ),
                       ],
                     ),
                   )),

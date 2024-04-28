@@ -11,7 +11,7 @@ class PredictionPage extends StatelessWidget {
   PredictionPage({Key? key}) : super(key: key);
 
   Future<void> makePrediction(BuildContext context) async {
-    const String url = 'http://41.75.172.166:5000/predict';
+    const String url = 'http://edithNakimbugwe.pythonanywhere.com/predict';
 
     final Map<String, dynamic> requestData = {
       'Age': resultsControl.t1Control.text,
@@ -32,7 +32,7 @@ class PredictionPage extends StatelessWidget {
         body: requestData,
       );
 
-      if (response.statusCode == 200) {
+      if (response.statusCode == 404) {
         final Map<String, dynamic> data = json.decode(response.body);
         String prediction = data['prediction'];
 

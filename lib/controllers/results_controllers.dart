@@ -19,12 +19,22 @@ class ResultsControllers extends GetxController {
     if (age == '' || age == null) {
       return 'value required';
     }
+    String pattern = r'^\d+$';
+    RegExp reg = RegExp(pattern);
+    if (!reg.hasMatch(age)) {
+      return 'Insert Numeric!';
+    }
     return null;
   }
 
   String? validateAlb(String? alb) {
     if (alb == '' || alb == null) {
       return 'value required';
+    }
+    String pattern = r'^\d+$';
+    RegExp reg = RegExp(pattern);
+    if (!reg.hasMatch(alb)) {
+      return 'Insert Numeric!';
     }
     return null;
   }
@@ -33,12 +43,22 @@ class ResultsControllers extends GetxController {
     if (alp == '' || alp == null) {
       return 'value required';
     }
+    String pattern = r'^\d+$';
+    RegExp reg = RegExp(pattern);
+    if (!reg.hasMatch(alp)) {
+      return 'Insert Numeric!';
+    }
     return null;
   }
 
   String? validateAlt(String? alt) {
     if (alt == '' || alt == null) {
       return 'value required';
+    }
+    String pattern = r'^\d+$';
+    RegExp reg = RegExp(pattern);
+    if (!reg.hasMatch(alt)) {
+      return 'Insert Numeric!';
     }
     return null;
   }
@@ -47,12 +67,22 @@ class ResultsControllers extends GetxController {
     if (ast == '' || ast == null) {
       return 'value required';
     }
+    String pattern = r'^\d+$';
+    RegExp reg = RegExp(pattern);
+    if (!reg.hasMatch(ast)) {
+      return 'Insert Numeric!';
+    }
     return null;
   }
 
   String? validateBil(String? bil) {
     if (bil == '' || bil == null) {
       return 'value required';
+    }
+    String pattern = r'^\d+$';
+    RegExp reg = RegExp(pattern);
+    if (!reg.hasMatch(bil)) {
+      return 'Insert Numeric!';
     }
     return null;
   }
@@ -61,6 +91,11 @@ class ResultsControllers extends GetxController {
     if (che == '' || che == null) {
       return 'value required';
     }
+    String pattern = r'^\d+$';
+    RegExp reg = RegExp(pattern);
+    if (!reg.hasMatch(che)) {
+      return 'Insert Numeric!';
+    }
     return null;
   }
 
@@ -68,12 +103,22 @@ class ResultsControllers extends GetxController {
     if (cho == '' || cho == null) {
       return 'value required';
     }
+    String pattern = r'^\d+$';
+    RegExp reg = RegExp(pattern);
+    if (!reg.hasMatch(cho)) {
+      return 'Insert Numeric!';
+    }
     return null;
   }
 
   String? validateProteins(String? prot) {
     if (prot == '' || prot == null) {
       return 'value required';
+    }
+    String pattern = r'^\d+$';
+    RegExp reg = RegExp(pattern);
+    if (!reg.hasMatch(prot)) {
+      return 'Insert Numeric!';
     }
     return null;
   }
