@@ -1,10 +1,11 @@
 import 'package:diagnosis_accuracy/controllers/results_controllers.dart';
 import 'package:diagnosis_accuracy/services/firebase_services.dart';
-import 'package:diagnosis_accuracy/views/patient_report.dart';
 import 'package:diagnosis_accuracy/widgets/text_form_field.dart';
 import 'package:diagnosis_accuracy/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import 'patient_report.dart';
 
 class ResultsPage extends StatelessWidget {
   const ResultsPage({Key? key}) : super(key: key);
@@ -259,7 +260,7 @@ class ResultsPage extends StatelessWidget {
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.lightGreen,
                     ),
-                    onPressed: () {
+                    onPressed: () async {
                       if (resultsControl.resultsFormKey.currentState!
                           .validate()) {
                         AuthController.instance.addLabResultsData(
@@ -274,54 +275,88 @@ class ResultsPage extends StatelessWidget {
                           ggt: resultsControl.t9Control.text.trim(),
                           prot: resultsControl.t10Control.text.trim(),
                         );
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return AlertDialog(
-                              backgroundColor: Colors.amber[50],
-                              title: TextWidget(
-                                text: 'Diagnostic Outcome',
-                                isHeading: true,
-                                colors: Colors.lightGreen,
-                              ),
-                              content: TextWidget(
-                                  text:
-                                      'Model Prediction Result will be displayed here!'),
-                              actions: [
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    TextButton(
-                                      onPressed: () {
-                                        authControl.retrievePatientData();
-                                        authControl.retrieveLabResultsData();
-                                        Navigator.of(context).pop();
-                                        Get.to(() => const PatientReportView());
-                                      },
-                                      child: TextWidget(
-                                        text: 'Analyse result',
+                        try {
+                          Map<String, dynamic> response =
+                              await sendPredictionRequest({
+                            'Age': resultsControl.t1Control.text.trim(),
+                            'ALB': resultsControl.t2Control.text.trim(),
+                            'ALP': resultsControl.t3Control.text.trim(),
+                            'ALT': resultsControl.t4Control.text.trim(),
+                            'AST': resultsControl.t5Control.text.trim(),
+                            'BIL': resultsControl.t6Control.text.trim(),
+                            'CHE': resultsControl.t7Control.text.trim(),
+                            'CHOL': resultsControl.t8Control.text.trim(),
+                            'GGT': resultsControl.t9Control.text.trim(),
+                            'PROT': resultsControl.t10Control.text.trim(),
+                          });
+                          String diagnosticOutcome =
+                              response['diagnostic_outcome'];
+
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return AlertDialog(
+                                title: const Text('Diagnostic Outcome'),
+                                content: Text(
+                                    'Diagnostic Outcome: $diagnosticOutcome'),
+                                actions: [
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      TextButton(
+                                        onPressed: () {
+                                          authControl.retrievePatientData();
+                                          authControl.retrieveLabResultsData();
+                                          Navigator.of(context).pop();
+                                          Get.to(
+                                              () => const PatientReportView());
+                                        },
+                                        child: TextWidget(
+                                          text: 'Analyse result',
+                                        ),
                                       ),
-                                    ),
-                                    TextButton(
-                                      onPressed: () {
-                                        Navigator.of(context).pop();
-                                      },
-                                      child: TextWidget(
-                                        text: 'Close',
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.of(context).pop();
+                                        },
+                                        child: TextWidget(
+                                          text: 'Close',
+                                        ),
                                       ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            );
-                          },
-                        );
+                                    ],
+                                  ),
+                                ],
+                                backgroundColor: Colors.amber[50],
+                              );
+                            },
+                          );
+                        } catch (e) {
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return AlertDialog(
+                                title: const Text('Error'),
+                                content: const Text(
+                                    'Failed to get diagnostic outcome. Please try again.'),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                    child: const Text('OK'),
+                                  ),
+                                ],
+                                backgroundColor: Colors.amber[50],
+                              );
+                            },
+                          );
+                        }
                       }
                     },
-                    child: TextWidget(text: 'SUBMIT'),
+                    child: const Text('SUBMIT'),
                   ),
-                )
+                ),
               ],
             ),
           ),

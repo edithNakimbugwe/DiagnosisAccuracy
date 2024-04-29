@@ -11,8 +11,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
-import 'predicton_trial.dart';
-
 Future<String> loadAboutUsTextFile() async {
   return await rootBundle.loadString('assets/docs/about_us.html');
 }

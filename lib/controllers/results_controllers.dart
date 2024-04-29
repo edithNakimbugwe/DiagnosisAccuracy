@@ -1,5 +1,19 @@
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+Future<Map<String, dynamic>> sendPredictionRequest(
+    Map<String, dynamic> data) async {
+  final response = await http.post(
+      Uri.parse('https://e7be-41-75-175-123.ngrok-free.app/predict'),
+      body: data);
+  if (response.statusCode == 200) {
+    return json.decode(response.body);
+  } else {
+    throw Exception('Failed to load predictions');
+  }
+}
 
 class ResultsControllers extends GetxController {
   final t1Control = TextEditingController();
@@ -25,7 +39,11 @@ class ResultsControllers extends GetxController {
       return 'Insert Numeric!';
     }
 
-    int ageValue = int.tryParse(age)!;
+    int? ageValue = int.tryParse(age);
+
+    if (ageValue == null) {
+      return 'Invalid number format';
+    }
     int minAge = 0;
     int maxAge = 200;
 
@@ -48,7 +66,11 @@ class ResultsControllers extends GetxController {
     if (!reg.hasMatch(alb)) {
       return 'Insert Numeric!';
     }
-    int albValue = int.tryParse(alb)!;
+    int? albValue = int.tryParse(alb);
+
+    if (albValue == null) {
+      return 'Invalid number format';
+    }
     int minAlb = 0;
     int maxAlb = 8;
 
@@ -71,7 +93,11 @@ class ResultsControllers extends GetxController {
     if (!reg.hasMatch(alp)) {
       return 'Insert Numeric!';
     }
-    int alpValue = int.tryParse(alp)!;
+    int? alpValue = int.tryParse(alp);
+
+    if (alpValue == null) {
+      return 'Invalid number format';
+    }
     int minAlp = 10;
     int maxAlp = 500;
 
@@ -93,7 +119,11 @@ class ResultsControllers extends GetxController {
     if (!reg.hasMatch(alt)) {
       return 'Insert Numeric!';
     }
-    int altValue = int.tryParse(alt)!;
+    int? altValue = int.tryParse(alt);
+
+    if (altValue == null) {
+      return 'Invalid number format';
+    }
     int minAlt = 0;
     int maxAlt = 2000;
 
@@ -115,7 +145,11 @@ class ResultsControllers extends GetxController {
     if (!reg.hasMatch(ast)) {
       return 'Insert Numeric!';
     }
-    int astValue = int.tryParse(ast)!;
+    int? astValue = int.tryParse(ast);
+
+    if (astValue == null) {
+      return 'Invalid number format';
+    }
     int minAst = 0;
     int maxAst = 2000;
 
@@ -137,7 +171,11 @@ class ResultsControllers extends GetxController {
     if (!reg.hasMatch(bil)) {
       return 'Insert Numeric!';
     }
-    int bilValue = int.tryParse(bil)!;
+    int? bilValue = int.tryParse(bil);
+
+    if (bilValue == null) {
+      return 'Invalid number format';
+    }
     int minBil = 0;
     int maxBil = 30;
 
@@ -159,7 +197,11 @@ class ResultsControllers extends GetxController {
     if (!reg.hasMatch(che)) {
       return 'Insert Numeric!';
     }
-    int cheValue = int.tryParse(che)!;
+    int? cheValue = int.tryParse(che);
+
+    if (cheValue == null) {
+      return 'Invalid number format';
+    }
     int minChe = 500;
     int maxChe = 20000;
 
@@ -181,7 +223,11 @@ class ResultsControllers extends GetxController {
     if (!reg.hasMatch(cho)) {
       return 'Insert Numeric!';
     }
-    int choValue = int.tryParse(cho)!;
+    int? choValue = int.tryParse(cho);
+
+    if (choValue == null) {
+      return 'Invalid number format';
+    }
     int minCho = 50;
     int maxCho = 500;
 
@@ -204,7 +250,11 @@ class ResultsControllers extends GetxController {
     if (!reg.hasMatch(prot)) {
       return 'Insert Numeric!';
     }
-    int protValue = int.tryParse(prot)!;
+    int? protValue = int.tryParse(prot);
+
+    if (protValue == null) {
+      return 'Invalid number format';
+    }
     int minProt = 1;
     int maxProt = 20;
 
@@ -226,7 +276,11 @@ class ResultsControllers extends GetxController {
     if (!reg.hasMatch(ggt)) {
       return 'Insert Numeric!';
     }
-    int ggtValue = int.tryParse(ggt)!;
+    int? ggtValue = int.tryParse(ggt);
+
+    if (ggtValue == null) {
+      return 'Invalid number format';
+    }
     int minGgt = 0;
     int maxGgt = 2000;
 
