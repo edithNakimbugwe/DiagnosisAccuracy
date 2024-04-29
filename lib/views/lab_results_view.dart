@@ -94,7 +94,7 @@ class ResultsPage extends StatelessWidget {
                                   validation: resultsControl.validateAlp,
                                   text: TextWidget(text: ''),
                                   controller: resultsControl.t3Control,
-                                  hint: '44-147'),
+                                  hint: '20-140'),
                             ),
                             TextWidget(text: 'IU/L')
                           ],
@@ -116,7 +116,7 @@ class ResultsPage extends StatelessWidget {
                                   validation: resultsControl.validateAlt,
                                   text: TextWidget(text: ''),
                                   controller: resultsControl.t4Control,
-                                  hint: '4-36'),
+                                  hint: '5-56'),
                             ),
                             TextWidget(text: 'IU/L')
                           ],
@@ -138,7 +138,7 @@ class ResultsPage extends StatelessWidget {
                                   validation: resultsControl.validateAst,
                                   text: TextWidget(text: ''),
                                   controller: resultsControl.t5Control,
-                                  hint: '8-33'),
+                                  hint: '10-40'),
                             ),
                             TextWidget(text: 'IU/L')
                           ],
@@ -158,7 +158,7 @@ class ResultsPage extends StatelessWidget {
                                   validation: resultsControl.validateBil,
                                   text: TextWidget(text: ''),
                                   controller: resultsControl.t6Control,
-                                  hint: ' 1.2'),
+                                  hint: ' 0.1-1.2 '),
                             ),
                             TextWidget(text: 'mg/dL')
                           ],
@@ -180,7 +180,7 @@ class ResultsPage extends StatelessWidget {
                                   validation: resultsControl.validateChe,
                                   text: TextWidget(text: ''),
                                   controller: resultsControl.t7Control,
-                                  hint: ''),
+                                  hint: '5000-13000'),
                             ),
                             TextWidget(text: 'IU/L')
                           ],
@@ -202,7 +202,7 @@ class ResultsPage extends StatelessWidget {
                                   validation: resultsControl.validateCho,
                                   text: TextWidget(text: ''),
                                   controller: resultsControl.t8Control,
-                                  hint: ''),
+                                  hint: '<200'),
                             ),
                             TextWidget(text: 'mg/dL')
                           ],
@@ -222,7 +222,7 @@ class ResultsPage extends StatelessWidget {
                                   validation: resultsControl.validateGgt,
                                   text: TextWidget(text: ''),
                                   controller: resultsControl.t9Control,
-                                  hint: ''),
+                                  hint: '5-48'),
                             ),
                             TextWidget(text: 'IU/L')
                           ],
@@ -244,7 +244,7 @@ class ResultsPage extends StatelessWidget {
                                   validation: resultsControl.validateProteins,
                                   text: TextWidget(text: ''),
                                   controller: resultsControl.t10Control,
-                                  hint: ''),
+                                  hint: '6-8.3'),
                             ),
                             TextWidget(text: 'g/dL')
                           ],
