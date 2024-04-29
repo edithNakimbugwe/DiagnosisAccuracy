@@ -112,6 +112,25 @@ class PatientReportView extends StatelessWidget {
                       }),
                     ),
                   ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Container(
+                    padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
+                    height: 80,
+                    width: 500,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: Colors.amber[100]),
+                    child: Center(
+                      child: TextWidget(
+                          text:
+                              'This section will have a brief description about the generated results to enlighten both the doctor and the patient'),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [

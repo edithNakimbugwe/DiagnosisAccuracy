@@ -296,7 +296,11 @@ class ResultsPage extends StatelessWidget {
                             context: context,
                             builder: (BuildContext context) {
                               return AlertDialog(
-                                title: const Text('Diagnostic Outcome'),
+                                title: TextWidget(
+                                  text: 'Diagnostic Outcome',
+                                  isHeading: true,
+                                  colors: Colors.red,
+                                ),
                                 content: Text(
                                     'Diagnostic Outcome: $diagnosticOutcome'),
                                 actions: [
@@ -313,7 +317,7 @@ class ResultsPage extends StatelessWidget {
                                               () => const PatientReportView());
                                         },
                                         child: TextWidget(
-                                          text: 'Analyse result',
+                                          text: 'Review result',
                                         ),
                                       ),
                                       TextButton(
@@ -336,15 +340,20 @@ class ResultsPage extends StatelessWidget {
                             context: context,
                             builder: (BuildContext context) {
                               return AlertDialog(
-                                title: const Text('Error'),
-                                content: const Text(
-                                    'Failed to get diagnostic outcome. Please try again.'),
+                                title: TextWidget(
+                                  text: 'Error',
+                                  isHeading: true,
+                                  colors: Colors.red,
+                                ),
+                                content: TextWidget(
+                                    text:
+                                        'Failed to get diagnostic outcome. Please try again.'),
                                 actions: [
                                   TextButton(
                                     onPressed: () {
                                       Navigator.of(context).pop();
                                     },
-                                    child: const Text('OK'),
+                                    child: TextWidget(text: 'Close'),
                                   ),
                                 ],
                                 backgroundColor: Colors.amber[50],
@@ -354,7 +363,10 @@ class ResultsPage extends StatelessWidget {
                         }
                       }
                     },
-                    child: const Text('SUBMIT'),
+                    child: TextWidget(
+                      text: 'SUBMIT',
+                      isHeading: true,
+                    ),
                   ),
                 ),
               ],

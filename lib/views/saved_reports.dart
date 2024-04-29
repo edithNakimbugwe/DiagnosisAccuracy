@@ -17,7 +17,7 @@ class SavedReportspage extends StatelessWidget {
           elevation: 0,
         ),
         body: Padding(
-          padding: const EdgeInsets.fromLTRB(35, 35, 35, 35),
+          padding: const EdgeInsets.fromLTRB(35, 35, 35, 0),
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -26,8 +26,15 @@ class SavedReportspage extends StatelessWidget {
                   text: 'All saved reports for your clients will appear here',
                   colors: Colors.indigo,
                 ),
+                const SizedBox(
+                  height: 200,
+                ),
                 ElevatedButton(
-                    onPressed: () {}, child: TextWidget(text: 'Close'))
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.lightGreen,
+                    ),
+                    onPressed: () {},
+                    child: TextWidget(text: 'Close'))
               ],
             ),
           ),
